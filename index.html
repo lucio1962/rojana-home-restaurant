@@ -215,6 +215,22 @@
         .about-image:hover img {
             transform: scale(1.05);
         }
+
+        /* Stili per la tua foto */
+        .owner-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--sicilian-orange);
+            margin: 20px auto;
+            display: block;
+        }
+        
+        .photo-section {
+            text-align: center;
+            margin: 30px 0;
+        }
         
         /* Menu del Giorno */
         #daily-menu {
@@ -782,6 +798,14 @@
     <section id="about">
         <div class="container">
             <h2 class="section-title">Chi Siamo</h2>
+            
+            <!-- Spazio per la tua foto -->
+            <div class="photo-section">
+                <img src="https://via.placeholder.com/400x400/FFA500/FFFFFF?text=La+Tua+Foto+Qui" alt="Lucio - Proprietario Rojana" class="owner-photo">
+                <h3>Lucio</h3>
+                <p>Proprietario e Chef</p>
+            </div>
+            
             <div class="about-content">
                 <div class="about-text">
                     <p>Benvenuti a Rojana, un home restaurant unico nel suo genere che unisce i sapori autentici della Sicilia e della Thailandia.</p>
@@ -1414,7 +1438,7 @@
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <p><strong>Email:</strong> [Inserisci la tua email qui]</p>
+                                <p><strong>Email:</strong> lucianosmriglio@gmail.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1454,7 +1478,7 @@
                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
             <p>&copy; 2023 Rojana Home Restaurant - Cucina Tradizionale Siciliana e Thailandese. Tutti i diritti riservati.</p>
-            <p>Home Restaurant - [Inserisci il tuo indirizzo qui] | Tel: 338 446 1593</p>
+            <p>Home Restaurant - Contrada Spaccazza - Noto (SR) | Tel: 338 446 1593</p>
         </div>
     </footer>
 
