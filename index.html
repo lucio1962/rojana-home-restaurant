@@ -94,7 +94,7 @@
         
         /* Header */
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('foto-sfondo.JPG');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('FOTO-SFONDO.JPG');
             background-size: cover;
             background-position: center;
             padding: 100px 0;
@@ -281,6 +281,50 @@
         .menu-item-price {
             color: var(--thai-red);
             font-weight: bold;
+        }
+
+        /* Stili per la modale ordine */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .order-btn {
+            transition: all 0.3s;
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
+            }
         }
         
         /* Menu */
@@ -807,7 +851,7 @@
                 <li><a href="#about">Chi Siamo</a></li>
                 <li><a href="#daily-menu">Menu del Giorno</a></li>
                 <li><a href="#menu">Menu Completo</a></li>
-                <li><a href="#courses">Corsi di Cucina Thaylandese</a></li>
+                <li><a href="#courses">Corsi di Cucina</a></li>
                 <li><a href="#reservations">Ordina Asporto</a></li>
                 <li><a href="#gallery">Galleria</a></li>
                 <li><a href="#contact">Contatti</a></li>
@@ -828,7 +872,7 @@
                     <p>Vi aspettiamo per farvi provare i veri sapori della Thailandia!</p>
                 </div>
                 <div class="about-image">
-                    <img src="foto-chisiamo.JPG" alt="Rojana - Cucina Thailandese">
+                    <img src="FOTO-CHISIAMO.JPG" alt="Rojana - Cucina Thailandese">
                 </div>
             </div>
         </div>
@@ -851,6 +895,7 @@
                                 <span class="menu-item-price">€9</span>
                             </div>
                             <p id="thai-antipasto-desc">Polpette di pesce speziate con salsa di cetrioli</p>
+                            <button class="btn btn-thai order-btn">Ordina</button>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -858,6 +903,7 @@
                                 <span class="menu-item-price">€10</span>
                             </div>
                             <p id="thai-zuppa-desc">Zuppa di cocco con pollo, galangal e lime</p>
+                            <button class="btn btn-thai order-btn">Ordina</button>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -865,6 +911,7 @@
                                 <span class="menu-item-price">€14</span>
                             </div>
                             <p id="thai-principale-desc">Spaghetti di riso saltati con gamberi, tofu e germogli di soia</p>
+                            <button class="btn btn-thai order-btn">Ordina</button>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -872,6 +919,7 @@
                                 <span class="menu-item-price">€7</span>
                             </div>
                             <p>Riso glutinoso con mango e salsa di cocco</p>
+                            <button class="btn btn-thai order-btn">Ordina</button>
                         </div>
                     </div>
                 </div>
@@ -908,6 +956,7 @@
                                 </div>
                             </div>
                             <p class="menu-item-price">€13</p>
+                            <button class="btn btn-thai order-btn">Ordina</button>
                         </div>
                     </div>
                     <div class="menu-item-card">
@@ -925,211 +974,17 @@
                                 </div>
                             </div>
                             <p class="menu-item-price">€14</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-pad-see-ew.jpg" alt="Pad See Ew">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Pad See Ew</h3>
-                            <p>Spaghetti di riso larghi saltati con salsa di soia scura e broccoli.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Proteine:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Pollo</span>
-                                    <span class="option-tag">Manzo</span>
-                                    <span class="option-tag">Gamberi</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€12</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-massaman-curry.jpg" alt="Massaman Curry">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Massaman Curry</h3>
-                            <p>Curry dolce e cremoso con patate, arachidi e carne di manzo.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Proteine:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Manzo</span>
-                                    <span class="option-tag">Pollo</span>
-                                    <span class="option-tag">Tofu</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€15</p>
+                            <button class="btn btn-thai order-btn">Ordina</button>
                         </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Antipasti -->
-            <div class="menu-category" id="antipasti">
-                <div class="menu-items-grid">
-                    <div class="menu-item-card">
-                        <img src="placeholder-involtini.jpg" alt="Involtini Primavera">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Involtini Primavera</h3>
-                            <p>Crocchanti involtini ripieni di verdure e serviti con salsa agrodolce.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Ripieni:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Vegetariano</span>
-                                    <span class="option-tag">Carne</span>
-                                    <span class="option-tag">Pesce</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€7 (4 pezzi)</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-satay.jpg" alt="Satay">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Satay</h3>
-                            <p>Spiedini di pollo alla griglia con salsa di arachidi.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Varianti:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Pollo</span>
-                                    <span class="option-tag">Manzo</span>
-                                    <span class="option-tag">Maiale</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€8 (4 pezzi)</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-tod-mun.jpg" alt="Tod Mun Pla">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Tod Mun Pla</h3>
-                            <p>Polpette di pesce speziate con salsa di cetrioli.</p>
-                            <p class="menu-item-price">€9 (6 pezzi)</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-ravioli.jpg" alt="Ravioli Cinesi">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Ravioli Cinesi (Gyoza)</h3>
-                            <p>Ravioli al vapore o fritti ripieni di carne o verdure.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Opzioni:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Carne</span>
-                                    <span class="option-tag">Pesce</span>
-                                    <span class="option-tag">Vegetariano</span>
-                                    <span class="option-tag">Al vapore</span>
-                                    <span class="option-tag">Fritti</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€8 (6 pezzi)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Zuppe -->
-            <div class="menu-category" id="zuppe">
-                <div class="menu-items-grid">
-                    <div class="menu-item-card">
-                        <img src="placeholder-tom-yum.jpg" alt="Tom Yum Goong">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Tom Yum Goong</h3>
-                            <p>Zuppa piccante e aspra con gamberi, funghi, citronella e lime.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Piccantezza:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Mild</span>
-                                    <span class="option-tag">Medium</span>
-                                    <span class="option-tag">Hot</span>
-                                    <span class="option-tag">Thai Hot</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€11</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-tom-kha.jpg" alt="Tom Kha Gai">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Tom Kha Gai</h3>
-                            <p>Zuppa di cocco con pollo, galangal, funghi e lime.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Piccantezza:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Mild</span>
-                                    <span class="option-tag">Medium</span>
-                                    <span class="option-tag">Hot</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€10</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-tom-yum-talay.jpg" alt="Tom Yum Talay">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Tom Yum Talay</h3>
-                            <p>Zuppa piccante con misto di frutti di mare.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Piccantezza:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Mild</span>
-                                    <span class="option-tag">Medium</span>
-                                    <span class="option-tag">Hot</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€13</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-tom-jued.jpg" alt="Tom Jued">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Tom Jued</h3>
-                            <p>Zuppa leggera con tofu, verdure e carne di maiale macinata.</p>
-                            <p class="menu-item-price">€9</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Dolci -->
-            <div class="menu-category" id="dolci">
-                <div class="menu-items-grid">
-                    <div class="menu-item-card">
-                        <img src="placeholder-mango-rice.jpg" alt="Mango Sticky Rice">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Mango Sticky Rice</h3>
-                            <p>Riso glutinoso con mango e salsa di cocco.</p>
-                            <p class="menu-item-price">€7</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-custard.jpg" alt="Thai Custard">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Thai Custard</h3>
-                            <p>Budino di cocco e zucca al vapore.</p>
-                            <p class="menu-item-price">€6</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-banana.jpg" alt="Banana in Coconut Milk">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Banana in Coconut Milk</h3>
-                            <p>Banane cotte in latte di cocco dolce.</p>
-                            <p class="menu-item-price">€6</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="placeholder-thai-tea.jpg" alt="Thai Iced Tea">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Thai Iced Tea</h3>
-                            <p>Tè thailandese dolce con latte condensato.</p>
-                            <p class="menu-item-price">€4</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Altri menu categories... -->
         </div>
     </section>
 
-    <!-- Corsi di Cucina -->
+    <!-- Corsi di Cucina Thailandese -->
     <section id="courses">
         <div class="container">
             <h2 class="section-title">Corsi di Cucina Thailandese</h2>
@@ -1139,7 +994,7 @@
                         <img src="placeholder-corso-base.jpg" alt="Corso di Cucina Thailandese Base">
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Cucina Thailandese Base</h3>
+                        <h3 class="course-title">Corso di Cucina Thailandese Base</h3>
                         <span class="course-type thai">Thailandese</span>
                         <div class="course-details">
                             <p><strong>Durata:</strong> 3 ore</p>
@@ -1157,7 +1012,7 @@
                         <img src="placeholder-corso-curry.jpg" alt="Corso di Curry Thailandesi">
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Curry Thailandesi</h3>
+                        <h3 class="course-title">Corso di Curry Thailandesi</h3>
                         <span class="course-type thai">Thailandese</span>
                         <div class="course-details">
                             <p><strong>Durata:</strong> 3.5 ore</p>
@@ -1167,42 +1022,6 @@
                             <p><strong>Costo:</strong> €70 a persona</p>
                         </div>
                         <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Curry%20Thailandesi" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="placeholder-corso-street.jpg" alt="Corso di Street Food Thailandese">
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Street Food Thailandese</h3>
-                        <span class="course-type thai">Thailandese</span>
-                        <div class="course-details">
-                            <p><strong>Durata:</strong> 4 ore</p>
-                            <p><strong>Livello:</strong> Principiante/Intermedio</p>
-                            <p><strong>Imparerai:</strong> Pad See Ew, Satay, Mango Sticky Rice</p>
-                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
-                            <p><strong>Costo:</strong> €75 a persona</p>
-                        </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Street%20Food%20Thailandese" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
-                    </div>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="placeholder-corso-antipasti.jpg" alt="Corso di Antipasti Thailandesi">
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Antipasti Thailandesi</h3>
-                        <span class="course-type thai">Thailandese</span>
-                        <div class="course-details">
-                            <p><strong>Durata:</strong> 3 ore</p>
-                            <p><strong>Livello:</strong> Principiante</p>
-                            <p><strong>Imparerai:</strong> Ravioli cinesi, involtini primavera, salse</p>
-                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
-                            <p><strong>Costo:</strong> €55 a persona</p>
-                        </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Antipasti%20Thailandesi" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
                     </div>
                 </div>
             </div>
@@ -1287,32 +1106,12 @@
                                     <label for="involtini">Involtini Primavera</label>
                                 </div>
                                 <div class="checkbox-option">
-                                    <input type="checkbox" id="satay" name="dishes" value="satay">
-                                    <label for="satay">Satay</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="tod-mun" name="dishes" value="tod-mun">
-                                    <label for="tod-mun">Tod Mun Pla</label>
-                                </div>
-                                <div class="checkbox-option">
                                     <input type="checkbox" id="pad-thai" name="dishes" value="pad-thai">
                                     <label for="pad-thai">Pad Thai</label>
                                 </div>
                                 <div class="checkbox-option">
                                     <input type="checkbox" id="green-curry" name="dishes" value="green-curry">
                                     <label for="green-curry">Green Curry</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="massaman" name="dishes" value="massaman">
-                                    <label for="massaman">Massaman Curry</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="tom-yum" name="dishes" value="tom-yum">
-                                    <label for="tom-yum">Tom Yum Goong</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="mango-rice" name="dishes" value="mango-rice">
-                                    <label for="mango-rice">Mango Sticky Rice</label>
                                 </div>
                             </div>
                         </div>
@@ -1322,21 +1121,6 @@
                         </div>
                         <button type="submit" class="btn">Invia Ordine</button>
                     </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Galleria -->
-    <section id="gallery">
-        <div class="container">
-            <h2 class="section-title">La Nostra Galleria</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="placeholder-galleria-1.jpg" alt="Rojana - Pad Thai">
-                </div>
-                <div class="gallery-item">
-                    <img src="placeholder-galleria-2.jpg" alt="Rojana - Green Curry">
                 </div>
             </div>
         </div>
@@ -1388,7 +1172,7 @@
                 </div>
                 <div class="map">
                     <h3>Dove Siamo</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3141.835689290936!2d15.0298913153166!3d36.88643999999999!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDUzJzExLjIiTiAxNcKwMDEnNTYuOSJF!5e0!3m2!1sit!2sit!4v1700000000000" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.835689290936!2d15.0298913153166!3d36.88643999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzbCsDUzJzExLjIiTiAxNcKwMDEnNTYuOSJF!5e0!3m2!1sit!2sit!4v1700000000000!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -1406,6 +1190,63 @@
             <p>Contrada Spaccazza - Noto (SR) | Tel: 338 446 1593</p>
         </div>
     </footer>
+
+    <!-- Modale per ordini -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <h3 style="margin-bottom: 20px; color: var(--thai-red);">Ordina Piatto</h3>
+            <form id="orderForm">
+                <div class="form-group">
+                    <label for="orderItem">Piatto:</label>
+                    <input type="text" id="orderItem" readonly style="background: #f5f5f5;">
+                </div>
+                <div class="form-group">
+                    <label for="orderPrice">Prezzo:</label>
+                    <input type="text" id="orderPrice" readonly style="background: #f5f5f5;">
+                </div>
+                <div class="form-group">
+                    <label for="orderQuantity">Quantità:</label>
+                    <select id="orderQuantity" required>
+                        <option value="">Seleziona</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="orderName">Nome e Cognome *</label>
+                    <input type="text" id="orderName" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderPhone">Telefono *</label>
+                    <input type="tel" id="orderPhone" required>
+                </div>
+                <div class="form-group">
+                    <label for="orderType">Tipo di Ritiro *</label>
+                    <select id="orderType" required>
+                        <option value="">Seleziona</option>
+                        <option value="ritiro">Ritiro in loco</option>
+                        <option value="consegna">Consegna a domicilio</option>
+                    </select>
+                </div>
+                <div class="form-group" id="deliveryAddressGroup" style="display: none;">
+                    <label for="orderAddress">Indirizzo di consegna *</label>
+                    <textarea id="orderAddress" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="orderNotes">Note (allergie, modifiche, ecc.)</label>
+                    <textarea id="orderNotes" rows="3"></textarea>
+                </div>
+                <div class="form-buttons" style="display: flex; gap: 10px; margin-top: 20px;">
+                    <button type="button" id="cancelOrder" class="btn" style="background: #666;">Annulla</button>
+                    <button type="submit" class="btn btn-thai">Invia Ordine WhatsApp</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <script>
         // Gestione dei tab del menu
@@ -1506,6 +1347,9 @@
             // Menu del giorno che cambia automaticamente
             updateDailyMenu();
             highlightCurrentDay();
+
+            // Setup modale ordini
+            setupOrderModal();
         });
 
         // Funzione per validare il form
@@ -1615,6 +1459,136 @@
             document.getElementById('thai-zuppa-desc').textContent = thaiMenu.descZuppa;
             document.getElementById('thai-principale-title').textContent = `Piatto Principale: ${thaiMenu.principale}`;
             document.getElementById('thai-principale-desc').textContent = thaiMenu.descPrincipale;
+        }
+
+        // Gestione modale ordini
+        function setupOrderModal() {
+            // Aggiungi event listener a tutti i pulsanti "Ordina"
+            const orderButtons = document.querySelectorAll('.order-btn');
+            const modal = document.getElementById('orderModal');
+            const orderForm = document.getElementById('orderForm');
+            const cancelBtn = document.getElementById('cancelOrder');
+            const orderType = document.getElementById('orderType');
+            const deliveryAddressGroup = document.getElementById('deliveryAddressGroup');
+            
+            orderButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const menuItem = this.closest('.menu-item, .menu-item-card');
+                    const itemTitle = menuItem.querySelector('.menu-item-title span:first-child').textContent;
+                    const itemPrice = menuItem.querySelector('.menu-item-price').textContent;
+                    
+                    openOrderModal({
+                        name: itemTitle,
+                        price: itemPrice
+                    });
+                });
+            });
+            
+            // Mostra/nascondi indirizzo consegna
+            orderType.addEventListener('change', function() {
+                deliveryAddressGroup.style.display = this.value === 'consegna' ? 'block' : 'none';
+                if (this.value === 'consegna') {
+                    document.getElementById('orderAddress').required = true;
+                } else {
+                    document.getElementById('orderAddress').required = false;
+                }
+            });
+            
+            // Chiudi modale
+            cancelBtn.addEventListener('click', closeOrderModal);
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) closeOrderModal();
+            });
+            
+            // Gestione invio ordine
+            orderForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                submitOrder();
+            });
+        }
+
+        function openOrderModal(item) {
+            const modal = document.getElementById('orderModal');
+            document.getElementById('orderItem').value = item.name;
+            document.getElementById('orderPrice').value = item.price;
+            modal.style.display = 'flex';
+            
+            // Reset form
+            document.getElementById('orderForm').reset();
+            document.getElementById('deliveryAddressGroup').style.display = 'none';
+        }
+
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function submitOrder() {
+            const item = document.getElementById('orderItem').value;
+            const price = document.getElementById('orderPrice').value;
+            const quantity = document.getElementById('orderQuantity').value;
+            const name = document.getElementById('orderName').value;
+            const phone = document.getElementById('orderPhone').value;
+            const orderType = document.getElementById('orderType').value;
+            const address = document.getElementById('orderAddress').value;
+            const notes = document.getElementById('orderNotes').value;
+            
+            // Validazione
+            if (!validateOrderForm()) {
+                return;
+            }
+            
+            // Crea messaggio WhatsApp
+            let whatsappMessage = `Ciao Rojana, vorrei ordinare!%0A%0A`;
+            whatsappMessage += `*Piatto:* ${item}%0A`;
+            whatsappMessage += `*Quantità:* ${quantity}%0A`;
+            whatsappMessage += `*Prezzo unitario:* ${price}%0A`;
+            whatsappMessage += `*Nome:* ${name}%0A`;
+            whatsappMessage += `*Telefono:* ${phone}%0A`;
+            whatsappMessage += `*Tipo ordine:* ${orderType === 'ritiro' ? 'Ritiro in loco' : 'Consegna a domicilio'}%0A`;
+            
+            if (orderType === 'consegna' && address) {
+                whatsappMessage += `*Indirizzo consegna:* ${address}%0A`;
+            }
+            
+            if (notes) {
+                whatsappMessage += `*Note:* ${notes}%0A`;
+            }
+            
+            // Apri WhatsApp
+            window.open(`https://wa.me/393384461593?text=${whatsappMessage}`, '_blank');
+            
+            // Chiudi modale
+            closeOrderModal();
+            
+            // Reset form
+            document.getElementById('orderForm').reset();
+        }
+
+        function validateOrderForm() {
+            const name = document.getElementById('orderName').value;
+            const phone = document.getElementById('orderPhone').value;
+            const quantity = document.getElementById('orderQuantity').value;
+            const orderType = document.getElementById('orderType').value;
+            const address = document.getElementById('orderAddress').value;
+            
+            if (!name || !phone || !quantity || !orderType) {
+                alert('Per favore, compila tutti i campi obbligatori');
+                return false;
+            }
+            
+            if (orderType === 'consegna' && !address) {
+                alert('Per la consegna a domicilio è necessario inserire l\'indirizzo');
+                return false;
+            }
+            
+            // Validazione telefono
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert('Inserisci un numero di telefono valido (10 cifre)');
+                return false;
+            }
+            
+            return true;
         }
     </script>
 </body>
