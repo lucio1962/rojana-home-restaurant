@@ -19,6 +19,7 @@
             --dark-blue: #2C3E50;
             --light-bg: #F9F9F9;
             --white: #FFFFFF;
+            --lilla: #C8A2C8;
         }
         
         body {
@@ -83,6 +84,11 @@
         .btn-thai {
             background: var(--thai-red);
         }
+
+        .btn-ricotta {
+            background: var(--lilla);
+            margin-top: 10px;
+        }
         
         /* Header */
         header {
@@ -106,6 +112,7 @@
             margin-bottom: 20px;
             font-family: 'Georgia', serif;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            color: var(--lilla);
         }
         
         .tagline {
@@ -250,6 +257,11 @@
         .thai-header {
             background: var(--thai-red);
         }
+
+        .ricotta-header {
+            background: var(--lilla);
+            margin-top: 30px;
+        }
         
         .menu-items {
             padding: 20px;
@@ -281,6 +293,10 @@
         
         .thai-price {
             color: var(--thai-red);
+        }
+
+        .ricotta-price {
+            color: var(--lilla);
         }
         
         /* Menu */
@@ -569,6 +585,15 @@
             margin-top: 20px;
             text-align: center;
         }
+
+        .ricotta-info {
+            background-color: rgba(200, 162, 200, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            border: 1px solid var(--lilla);
+        }
         
         /* Galleria */
         #gallery {
@@ -693,6 +718,25 @@
         
         .whatsapp-float:hover {
             transform: scale(1.1);
+        }
+
+        /* Stile per menu ricotta (visibile solo nel periodo) */
+        .ricotta-menu {
+            display: none;
+        }
+
+        .ricotta-menu.active {
+            display: block;
+        }
+
+        .seasonal-notice {
+            background: linear-gradient(45deg, var(--lilla), #e6d4e6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 10px 0;
+            display: inline-block;
         }
         
         /* Responsive */
@@ -872,6 +916,47 @@
                                 <span class="menu-item-price thai-price">€7</span>
                             </div>
                             <p>Riso glutinoso con mango e salsa di cocco</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Ricotta (visibile solo nel periodo natalizio) -->
+            <div class="ricotta-menu" id="ricotta-menu">
+                <div class="daily-menu-card">
+                    <div class="menu-header ricotta-header">
+                        <h3>Menu Speciale Ricotta - Periodo Natalizio</h3>
+                        <p>€30 - Solo dal 15 Dicembre al 1 Gennaio</p>
+                        <div class="seasonal-notice">SPECIALE NATALIZIO</div>
+                    </div>
+                    <div class="menu-items">
+                        <div class="menu-item">
+                            <div class="menu-item-title">
+                                <span>Antipasto: Ricotta fresca con miele e noci</span>
+                                <span class="menu-item-price ricotta-price">€10</span>
+                            </div>
+                            <p>Ricotta di pecora appena preparata con miele di agrumi e noci tostate</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title">
+                                <span>Primo: Ravioli di ricotta e spinaci</span>
+                                <span class="menu-item-price ricotta-price">€14</span>
+                            </div>
+                            <p>Pasta fresca ripiena di ricotta e spinaci con burro e salvia</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title">
+                                <span>Secondo: Sformatino di ricotta al forno</span>
+                                <span class="menu-item-price ricotta-price">€16</span>
+                            </div>
+                            <p>Sformatino di ricotta con prosciutto crudo e scorza di limone</p>
+                        </div>
+                        <div class="menu-item">
+                            <div class="menu-item-title">
+                                <span>Dolce: Cassata siciliana</span>
+                                <span class="menu-item-price ricotta-price">€8</span>
+                            </div>
+                            <p>Dolce tradizionale con ricotta, pan di spagna e frutta candita</p>
                         </div>
                     </div>
                 </div>
@@ -1146,15 +1231,16 @@
                         <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Cucina Thailandese">
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Cucina Thailandese Base</h3>
+                        <h3 class="course-title">Corsi di Cucina Thailandese</h3>
                         <span class="course-type thai">Thailandese</span>
                         <div class="course-details">
                             <p><strong>Durata:</strong> 3 ore</p>
                             <p><strong>Livello:</strong> Principiante</p>
                             <p><strong>Imparerai:</strong> Pad Thai, Tom Yum, involtini primavera</p>
+                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
                             <p><strong>Costo:</strong> €60 a persona</p>
                         </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Cucina%20Thailandese%20Base" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Cucina%20Thailandese" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
                     </div>
                 </div>
                 
@@ -1169,6 +1255,7 @@
                             <p><strong>Durata:</strong> 4 ore</p>
                             <p><strong>Livello:</strong> Principiante/Intermedio</p>
                             <p><strong>Imparerai:</strong> Arancini, Pasta alla Norma, Sfincione</p>
+                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
                             <p><strong>Costo:</strong> €70 a persona</p>
                         </div>
                         <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Cucina%20Siciliana%20Tradizionale" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
@@ -1186,6 +1273,7 @@
                             <p><strong>Durata:</strong> 3.5 ore</p>
                             <p><strong>Livello:</strong> Intermedio</p>
                             <p><strong>Imparerai:</strong> Pasta fresca, ravioli siciliani, ripieni</p>
+                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
                             <p><strong>Costo:</strong> €65 a persona</p>
                         </div>
                         <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Pasta%20Fresca%20e%20Ravioli" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
@@ -1203,6 +1291,7 @@
                             <p><strong>Durata:</strong> 3 ore</p>
                             <p><strong>Livello:</strong> Principiante</p>
                             <p><strong>Imparerai:</strong> Ravioli cinesi, involtini primavera, salse</p>
+                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
                             <p><strong>Costo:</strong> €55 a persona</p>
                         </div>
                         <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Ravioli%20Cinesi%20e%20Involtini" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
@@ -1238,7 +1327,7 @@
                         <p><strong>Esperienza in locale:</strong></p>
                         <ul>
                             <li>Menu fisso o alla carta</li>
-                            <li>Massimo 12 persone per serata</li>
+                            <li>Massimo 6-8 persone per serata</li>
                             <li>Atmosfera intima e familiare</li>
                             <li>Possibilità di scegliere tra cucina siciliana e thailandese</li>
                         </ul>
@@ -1252,6 +1341,13 @@
                             <li>Orari: 18:00 - 21:30</li>
                             <li>Consegna a domicilio disponibile nella zona (minimo €25)</li>
                         </ul>
+                    </div>
+
+                    <div class="ricotta-info">
+                        <p><strong>Menu Speciale Ricotta:</strong></p>
+                        <p>Disponibile solo dal <strong>15 Dicembre al 1 Gennaio</strong></p>
+                        <p>Prenota ora il tuo menu natalizio a base di ricotta fresca!</p>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20Menu%20Speciale%20Ricotta%20natalizio" class="btn btn-ricotta" target="_blank">Prenota Menu Ricotta</a>
                     </div>
                     
                     <div class="whatsapp-info">
@@ -1311,6 +1407,7 @@
                                 <option value="siciliana">Siciliana</option>
                                 <option value="thailandese">Thailandese</option>
                                 <option value="entrambe">Entrambe</option>
+                                <option value="ricotta">Speciale Ricotta (15/12 - 01/01)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1401,8 +1498,8 @@
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <p><strong>Indirizzo:</strong> [Inserisci il tuo indirizzo qui]</p>
-                                <p>Città, CAP</p>
+                                <p><strong>Indirizzo:</strong> Contrada Spaccazza - Noto (SR)</p>
+                                <p>Sicilia, Italia</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1414,7 +1511,7 @@
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <p><strong>Email:</strong> [Inserisci la tua email qui]</p>
+                                <p><strong>Email:</strong> info@rojanahomerestaurant.com</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1454,7 +1551,7 @@
                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
             <p>&copy; 2023 Rojana Home Restaurant - Cucina Tradizionale Siciliana e Thailandese. Tutti i diritti riservati.</p>
-            <p>Home Restaurant - [Inserisci il tuo indirizzo qui] | Tel: 338 446 1593</p>
+            <p>Contrada Spaccazza - Noto (SR) | Tel: 338 446 1593</p>
         </div>
     </footer>
 
@@ -1596,6 +1693,17 @@
                     takeawayInfo.style.display = 'none';
                 }
             });
+
+            // Gestione menu ricotta (visibile solo nel periodo natalizio)
+            const ricottaMenu = document.getElementById('ricotta-menu');
+            const today = new Date();
+            const currentMonth = today.getMonth() + 1; // 1-12
+            const currentDay = today.getDate(); // 1-31
+
+            // Mostra menu ricotta solo dal 15 dicembre al 1 gennaio
+            if ((currentMonth === 12 && currentDay >= 15) || (currentMonth === 1 && currentDay <= 1)) {
+                ricottaMenu.classList.add('active');
+            }
         });
     </script>
 </body>
