@@ -602,15 +602,18 @@
         
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
         }
         
         .gallery-item {
             border-radius: 10px;
             overflow: hidden;
-            height: 200px;
+            height: 300px;
             position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .gallery-item img {
@@ -775,6 +778,10 @@
             .reservation-options {
                 flex-direction: column;
             }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -844,7 +851,7 @@
     <!-- Menu del Giorno -->
     <section id="daily-menu">
         <div class="container">
-            <h2 class="section-title">Menu del Giorno</h2>
+            <h2 class="section-title" id="daily-menu-title">Menu del Giorno</h2>
             <div class="daily-menu-container">
                 <div class="daily-menu-card">
                     <div class="menu-header sicilian-header">
@@ -861,17 +868,17 @@
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
-                                <span>Primo: Pasta con le Sarde</span>
+                                <span id="sicilian-primo-title">Primo: Pasta con le Sarde</span>
                                 <span class="menu-item-price">€12</span>
                             </div>
-                            <p>Pasta con sarde, finocchietto, pinoli e uvetta</p>
+                            <p id="sicilian-primo-desc">Pasta con sarde, finocchietto, pinoli e uvetta</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
-                                <span>Secondo: Involtini di Pesce Spada</span>
+                                <span id="sicilian-secondo-title">Secondo: Involtini di Pesce Spada</span>
                                 <span class="menu-item-price">€16</span>
                             </div>
-                            <p>Pesce spada farcito con pangrattato e erbe aromatiche</p>
+                            <p id="sicilian-secondo-desc">Pesce spada farcito con pangrattato e erbe aromatiche</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -898,17 +905,17 @@
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
-                                <span>Zuppa: Tom Kha Gai</span>
+                                <span id="thai-zuppa-title">Zuppa: Tom Kha Gai</span>
                                 <span class="menu-item-price thai-price">€10</span>
                             </div>
-                            <p>Zuppa di cocco con pollo, galangal e lime</p>
+                            <p id="thai-zuppa-desc">Zuppa di cocco con pollo, galangal e lime</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
-                                <span>Piatto Principale: Pad Thai</span>
+                                <span id="thai-principale-title">Piatto Principale: Pad Thai</span>
                                 <span class="menu-item-price thai-price">€14</span>
                             </div>
-                            <p>Spaghetti di riso saltati con gamberi, tofu e germogli di soia</p>
+                            <p id="thai-principale-desc">Spaghetti di riso saltati con gamberi, tofu e germogli di soia</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -926,7 +933,7 @@
                 <div class="daily-menu-card">
                     <div class="menu-header ricotta-header">
                         <h3>Menu Speciale Ricotta - Periodo Natalizio</h3>
-                        <p>€30 - Solo dal 15 Dicembre al 1 Gennaio</p>
+                        <p>€30 - Solo dal 15 Dicembre al 8 Gennaio</p>
                         <div class="seasonal-notice">SPECIALE NATALIZIO</div>
                     </div>
                     <div class="menu-items">
@@ -1345,9 +1352,9 @@
 
                     <div class="ricotta-info">
                         <p><strong>Menu Speciale Ricotta:</strong></p>
-                        <p>Disponibile solo dal <strong>15 Dicembre al 1 Gennaio</strong></p>
+                        <p>Disponibile solo dal <strong>15 Dicembre al 8 Gennaio</strong></p>
                         <p>Prenota ora il tuo menu natalizio a base di ricotta fresca!</p>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20Menu%20Speciale%20Ricotta%20natalizio" class="btn btn-ricotta" target="_blank">Prenota Menu Ricotta</a>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20Menu%20Speciale%20Ricotta%20natalizio" class="btn btn-ricotta" target="_blank" id="ricotta-button">Prenota Menu Ricotta</a>
                     </div>
                     
                     <div class="whatsapp-info">
@@ -1407,7 +1414,7 @@
                                 <option value="siciliana">Siciliana</option>
                                 <option value="thailandese">Thailandese</option>
                                 <option value="entrambe">Entrambe</option>
-                                <option value="ricotta">Speciale Ricotta (15/12 - 01/01)</option>
+                                <option value="ricotta" id="ricotta-option">Speciale Ricotta (15/12 - 08/01)</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -1457,31 +1464,14 @@
     <!-- Galleria -->
     <section id="gallery">
         <div class="container">
-            <h2 class="section-title">Galleria</h2>
+            <h2 class="section-title">La Nostra Galleria</h2>
             <div class="gallery-grid">
+                <!-- Sostituisci questi URL con i link alle tue 2 foto -->
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cucina">
+                    <img src="https://via.placeholder.com/600x400/FFA500/FFFFFF?text=La+Tua+Prima+Foto+Qui" alt="Rojana - Prima foto del ristorante">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pasta alla Norma">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1559314809-0f155186aed0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pad Thai">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tom Yum">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1598214887288-8f67a6f2e5dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Arancini">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Involtini">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ravioli">
-                </div>
-                <div class="gallery-item">
-                    <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mango Sticky Rice">
+                    <img src="https://via.placeholder.com/600x400/C41E3A/FFFFFF?text=La+Tua+Seconda+Foto+Qui" alt="Rojana - Seconda foto del ristorante">
                 </div>
             </div>
         </div>
@@ -1582,6 +1572,9 @@
             const dineinInfo = document.getElementById('dinein-info');
             const takeawayInfo = document.getElementById('takeaway-info');
             const serviceTypeSelect = document.getElementById('service-type');
+            const ricottaMenu = document.getElementById('ricotta-menu');
+            const ricottaButton = document.getElementById('ricotta-button');
+            const ricottaOption = document.getElementById('ricotta-option');
             
             dineinOption.addEventListener('click', function() {
                 dineinOption.classList.add('selected');
@@ -1602,11 +1595,41 @@
             // Imposta opzione predefinita
             dineinOption.classList.add('selected');
             
+            // Gestione menu ricotta (visibile solo nel periodo natalizio)
+            const today = new Date();
+            const currentMonth = today.getMonth() + 1; // 1-12
+            const currentDay = today.getDate(); // 1-31
+
+            // Mostra menu ricotta solo dal 15 dicembre al 8 gennaio
+            const isRicottaPeriod = (currentMonth === 12 && currentDay >= 15) || 
+                                   (currentMonth === 1 && currentDay <= 8);
+            
+            if (isRicottaPeriod) {
+                ricottaMenu.classList.add('active');
+                // Abilita il pulsante ricotta
+                ricottaButton.style.display = 'inline-block';
+                // Mostra opzione ricotta nel select
+                ricottaOption.style.display = 'block';
+            } else {
+                ricottaMenu.classList.remove('active');
+                // Disabilita il pulsante ricotta
+                ricottaButton.style.display = 'none';
+                // Nascondi opzione ricotta nel select
+                ricottaOption.style.display = 'none';
+            }
+
             // Gestione del form di prenotazione
             const bookingForm = document.getElementById('booking-form');
             if (bookingForm) {
                 bookingForm.addEventListener('submit', function(e) {
                     e.preventDefault();
+                    
+                    // Controlla se è nel periodo ricotta
+                    const cuisine = document.getElementById('cuisine').value;
+                    if (cuisine === 'ricotta' && !isRicottaPeriod) {
+                        alert('Il Menu Speciale Ricotta è disponibile solo dal 15 Dicembre al 8 Gennaio');
+                        return;
+                    }
                     
                     // Raccogli i dati del form
                     const name = document.getElementById('name').value;
@@ -1615,7 +1638,6 @@
                     const time = document.getElementById('time').value;
                     const serviceType = document.getElementById('service-type').value;
                     const guests = document.getElementById('guests').value;
-                    const cuisine = document.getElementById('cuisine').value;
                     const message = document.getElementById('message').value;
                     
                     // Raccogli i piatti selezionati per asporto
@@ -1694,17 +1716,123 @@
                 }
             });
 
-            // Gestione menu ricotta (visibile solo nel periodo natalizio)
-            const ricottaMenu = document.getElementById('ricotta-menu');
-            const today = new Date();
-            const currentMonth = today.getMonth() + 1; // 1-12
-            const currentDay = today.getDate(); // 1-31
-
-            // Mostra menu ricotta solo dal 15 dicembre al 1 gennaio
-            if ((currentMonth === 12 && currentDay >= 15) || (currentMonth === 1 && currentDay <= 1)) {
-                ricottaMenu.classList.add('active');
-            }
+            // Menu del giorno che cambia automaticamente
+            updateDailyMenu();
         });
+
+        // Funzione per cambiare il menu del giorno automaticamente
+        function updateDailyMenu() {
+            const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+            const today = new Date();
+            const dayOfWeek = today.getDay();
+            
+            const sicilianMenus = {
+                0: { // Domenica
+                    primo: "Pasta con le Sarde",
+                    secondo: "Involtini di Pesce Spada",
+                    descPrimo: "Pasta con sarde, finocchietto, pinoli e uvetta",
+                    descSecondo: "Pesce spada farcito con pangrattato e erbe aromatiche"
+                },
+                1: { // Lunedì - CHIUSO
+                    primo: "Riposo settimanale",
+                    secondo: "Riposo settimanale",
+                    descPrimo: "Siamo chiusi il lunedì",
+                    descSecondo: "Ci rivediamo martedì!"
+                },
+                2: { // Martedì
+                    primo: "Pasta alla Norma",
+                    secondo: "Sarde a Beccafico", 
+                    descPrimo: "Pasta con melanzane fritte, pomodoro e ricotta salata",
+                    descSecondo: "Sarde farcite con pangrattato, pinoli e uvetta"
+                },
+                3: { // Mercoledì
+                    primo: "Spaghetti ai Ricci",
+                    secondo: "Polpette al Sugo",
+                    descPrimo: "Spaghetti con ricci di mare freschi",
+                    descSecondo: "Polpette di carne in sugo di pomodoro"
+                },
+                4: { // Giovedì
+                    primo: "Pasta con i Broccoli",
+                    secondo: "Salsiccia alla Brace",
+                    descPrimo: "Pasta con broccoli arriminati",
+                    descSecondo: "Salsiccia siciliana alla griglia"
+                },
+                5: { // Venerdì
+                    primo: "Risotto ai Frutti di Mare",
+                    secondo: "Frittura di Paranza",
+                    descPrimo: "Risotto cremoso con misto di frutti di mare",
+                    descSecondo: "Frittura mista di pesce fresco"
+                },
+                6: { // Sabato
+                    primo: "Lasagna Siciliana",
+                    secondo: "Arrosto di Maiale",
+                    descPrimo: "Lasagna con ragù, piselli e ricotta",
+                    descSecondo: "Arrosto di maiale con patate al forno"
+                }
+            };
+
+            const thaiMenus = {
+                0: { // Domenica
+                    principale: "Pad Thai Classico",
+                    zuppa: "Tom Yum Goong",
+                    descPrincipale: "Spaghetti di riso con gamberi, tofu e germogli",
+                    descZuppa: "Zuppa piccante con gamberi e citronella"
+                },
+                1: { // Lunedì - CHIUSO
+                    principale: "Riposo settimanale",
+                    zuppa: "Riposo settimanale", 
+                    descPrincipale: "Siamo chiusi il lunedì",
+                    descZuppa: "Ci rivediamo martedì!"
+                },
+                2: { // Martedì
+                    principale: "Green Curry",
+                    zuppa: "Tom Kha Gai",
+                    descPrincipale: "Curry verde con pollo e melanzane thailandesi",
+                    descZuppa: "Zuppa di cocco con pollo e galangal"
+                },
+                3: { // Mercoledì
+                    principale: "Pad See Ew",
+                    zuppa: "Tom Yum Talay",
+                    descPrincipale: "Spaghetti di riso saltati con carne di manzo",
+                    descZuppa: "Zuppa piccante con misto di mare"
+                },
+                4: { // Giovedì
+                    principale: "Massaman Curry",
+                    zuppa: "Tom Jued",
+                    descPrincipale: "Curry dolce con patate e arachidi",
+                    descZuppa: "Zuppa leggera con tofu e verdure"
+                },
+                5: { // Venerdì
+                    principale: "Khao Soi",
+                    zuppa: "Tom Sab",
+                    descPrincipale: "Spaghetti di uovo in curry con cocco",
+                    descZuppa: "Zuppa alle erbe thailandesi"
+                },
+                6: { // Sabato
+                    principale: "Panang Curry", 
+                    zuppa: "Kaeng Liang",
+                    descPrincipale: "Curry cremoso con manzo e lime",
+                    descZuppa: "Zuppa di verdure e gamberi"
+                }
+            };
+
+            // Aggiorna menu siciliano
+            const sicilianMenu = sicilianMenus[dayOfWeek];
+            document.getElementById('sicilian-primo-title').textContent = `Primo: ${sicilianMenu.primo}`;
+            document.getElementById('sicilian-primo-desc').textContent = sicilianMenu.descPrimo;
+            document.getElementById('sicilian-secondo-title').textContent = `Secondo: ${sicilianMenu.secondo}`;
+            document.getElementById('sicilian-secondo-desc').textContent = sicilianMenu.descSecondo;
+
+            // Aggiorna menu thailandese
+            const thaiMenu = thaiMenus[dayOfWeek];
+            document.getElementById('thai-principale-title').textContent = `Piatto Principale: ${thaiMenu.principale}`;
+            document.getElementById('thai-principale-desc').textContent = thaiMenu.descPrincipale;
+            document.getElementById('thai-zuppa-title').textContent = `Zuppa: ${thaiMenu.zuppa}`;
+            document.getElementById('thai-zuppa-desc').textContent = thaiMenu.descZuppa;
+
+            // Aggiorna il giorno della settimana
+            document.getElementById('daily-menu-title').innerHTML = `Menu del Giorno - <span style="color: var(--sicilian-orange)">${days[dayOfWeek]}</span>`;
+        }
     </script>
 </body>
 </html>
