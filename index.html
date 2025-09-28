@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rojana Home Restaurant - Cucina Siciliana e Thailandese</title>
+    <title>Rojana Home Restaurant - Cucina Thailandese Autentica</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Reset e stili base */
@@ -14,12 +14,13 @@
         }
         
         :root {
-            --sicilian-orange: #D35400;
             --thai-red: #C41E3A;
+            --thai-orange: #FF6B35;
+            --thai-gold: #FFAA00;
+            --thai-green: #2E8B57;
             --dark-blue: #2C3E50;
             --light-bg: #F9F9F9;
             --white: #FFFFFF;
-            --lilla: #C8A2C8;
         }
         
         body {
@@ -49,14 +50,14 @@
             display: block;
             width: 100px;
             height: 4px;
-            background: linear-gradient(to right, var(--sicilian-orange), var(--thai-red));
+            background: linear-gradient(to right, var(--thai-orange), var(--thai-red));
             margin: 15px auto;
             border-radius: 2px;
         }
         
         .btn {
             display: inline-block;
-            background: linear-gradient(to right, var(--sicilian-orange), var(--thai-red));
+            background: linear-gradient(to right, var(--thai-orange), var(--thai-red));
             color: white;
             padding: 12px 30px;
             border-radius: 30px;
@@ -77,21 +78,28 @@
             background: #25D366;
         }
         
-        .btn-sicilian {
-            background: var(--sicilian-orange);
-        }
-        
         .btn-thai {
             background: var(--thai-red);
         }
 
-        .btn-ricotta {
-            background: var(--lilla);
-            margin-top: 10px;
+        .disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .disabled:hover {
+            transform: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         /* Header */
-        <header style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('foto-sfondo.png'); background-size: cover; background-position: center;">
+        header {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1559314809-0f155186aed0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
         }
         
         .hero-content {
@@ -104,7 +112,7 @@
             margin-bottom: 20px;
             font-family: 'Georgia', serif;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            color: var(--lilla);
+            color: var(--thai-gold);
         }
         
         .tagline {
@@ -125,7 +133,7 @@
         
         .hero-decoration {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             max-width: 1000px;
             margin: 40px auto 0;
@@ -133,8 +141,7 @@
             z-index: 1;
         }
         
-        .sicilian-decoration, .thai-decoration {
-            flex: 1;
+        .thai-decoration {
             text-align: center;
             font-size: 5rem;
             opacity: 0.8;
@@ -222,6 +229,7 @@
         
         .daily-menu-container {
             display: flex;
+            justify-content: center;
             gap: 40px;
             flex-wrap: wrap;
         }
@@ -229,6 +237,7 @@
         .daily-menu-card {
             flex: 1;
             min-width: 300px;
+            max-width: 500px;
             background: var(--white);
             border-radius: 10px;
             overflow: hidden;
@@ -242,17 +251,8 @@
             font-weight: bold;
         }
         
-        .sicilian-header {
-            background: var(--sicilian-orange);
-        }
-        
         .thai-header {
             background: var(--thai-red);
-        }
-
-        .ricotta-header {
-            background: var(--lilla);
-            margin-top: 30px;
         }
         
         .menu-items {
@@ -279,16 +279,8 @@
         }
         
         .menu-item-price {
-            color: var(--sicilian-orange);
-            font-weight: bold;
-        }
-        
-        .thai-price {
             color: var(--thai-red);
-        }
-
-        .ricotta-price {
-            color: var(--lilla);
+            font-weight: bold;
         }
         
         /* Menu */
@@ -316,10 +308,10 @@
         }
         
         .tab-btn.active {
-            border-bottom: 3px solid var(--sicilian-orange);
-            color: var(--sicilian-orange);
+            border-bottom: 3px solid var(--thai-red);
+            color: var(--thai-red);
             font-weight: bold;
-            background-color: rgba(211, 84, 0, 0.1);
+            background-color: rgba(196, 30, 58, 0.1);
         }
         
         .menu-category {
@@ -451,11 +443,6 @@
             margin-bottom: 15px;
         }
         
-        .course-type.sicilian {
-            background-color: rgba(211, 84, 0, 0.2);
-            color: var(--sicilian-orange);
-        }
-        
         .course-type.thai {
             background-color: rgba(196, 30, 58, 0.2);
             color: var(--thai-red);
@@ -499,17 +486,23 @@
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s;
+            position: relative;
+        }
+        
+        .reservation-option.disabled {
+            cursor: not-allowed;
+            opacity: 0.6;
         }
         
         .reservation-option.selected {
-            border-color: var(--sicilian-orange);
-            background-color: rgba(211, 84, 0, 0.1);
+            border-color: var(--thai-red);
+            background-color: rgba(196, 30, 58, 0.1);
         }
         
         .reservation-option i {
             font-size: 2rem;
             margin-bottom: 10px;
-            color: var(--sicilian-orange);
+            color: var(--thai-red);
         }
         
         .reservation-form-container {
@@ -578,13 +571,13 @@
             text-align: center;
         }
 
-        .ricotta-info {
-            background-color: rgba(200, 162, 200, 0.1);
+        .closed-notice {
+            background-color: rgba(255, 0, 0, 0.1);
             padding: 15px;
             border-radius: 5px;
             margin-top: 20px;
             text-align: center;
-            border: 1px solid var(--lilla);
+            border: 1px solid #ff0000;
         }
         
         /* Galleria */
@@ -650,7 +643,7 @@
         
         .contact-item i {
             margin-right: 15px;
-            color: var(--sicilian-orange);
+            color: var(--thai-red);
             font-size: 1.2rem;
             width: 20px;
             text-align: center;
@@ -689,7 +682,7 @@
         }
         
         .social-links a:hover {
-            color: var(--sicilian-orange);
+            color: var(--thai-orange);
         }
         
         .whatsapp-float {
@@ -715,23 +708,9 @@
             transform: scale(1.1);
         }
 
-        /* Stile per menu ricotta (visibile solo nel periodo) */
-        .ricotta-menu {
-            display: none;
-        }
-
-        .ricotta-menu.active {
-            display: block;
-        }
-
-        .seasonal-notice {
-            background: linear-gradient(45deg, var(--lilla), #e6d4e6);
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
+        .current-day {
+            color: var(--thai-red);
             font-weight: bold;
-            margin: 10px 0;
-            display: inline-block;
         }
         
         /* Responsive */
@@ -775,11 +754,30 @@
                 grid-template-columns: 1fr;
             }
         }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .menu-items-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/393384461593?text=Ciao%20Rojana,%20vorrei%20informazioni!" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/393384461593?text=Ciao%20Rojana,%20vorrei%20ordinare%20asporto!" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
@@ -788,17 +786,13 @@
         <div class="container">
             <div class="hero-content">
                 <h1 class="logo">Rojana</h1>
-                <p class="tagline">Home Restaurant - Un viaggio culinario tra Sicilia e Thailandia</p>
+                <p class="tagline">Cucina Thailandese Autentica - Solo Asporto</p>
                 <div class="hero-buttons">
-                    <a href="#reservations" class="btn btn-sicilian">Prenota Tavolo</a>
                     <a href="#reservations" class="btn btn-thai">Ordina Asporto</a>
                     <a href="#courses" class="btn">Corsi di Cucina</a>
                 </div>
             </div>
             <div class="hero-decoration">
-                <div class="sicilian-decoration">
-                    <i class="fas fa-utensils"></i>
-                </div>
                 <div class="thai-decoration">
                     <i class="fas fa-dharmachakra"></i>
                 </div>
@@ -814,7 +808,7 @@
                 <li><a href="#daily-menu">Menu del Giorno</a></li>
                 <li><a href="#menu">Menu Completo</a></li>
                 <li><a href="#courses">Corsi di Cucina</a></li>
-                <li><a href="#reservations">Prenota/Asporto</a></li>
+                <li><a href="#reservations">Ordina Asporto</a></li>
                 <li><a href="#gallery">Galleria</a></li>
                 <li><a href="#contact">Contatti</a></li>
             </ul>
@@ -827,14 +821,14 @@
             <h2 class="section-title">Chi Siamo</h2>
             <div class="about-content">
                 <div class="about-text">
-                    <p>Benvenuti a Rojana, un home restaurant unico nel suo genere che unisce i sapori autentici della Sicilia e della Thailandia.</p>
-                    <p>La nostra storia nasce dall'incontro di due culture culinarie ricche e vibranti: la tradizione siciliana, con i suoi profumi mediterranei e ingredienti genuini, e la cucina thailandese, con i suoi sapori intensi e bilanciati.</p>
-                    <p>Mia moglie thailandese porta in tavola le ricette della sua terra, tramandate di generazione in generazione, mentre io condivido i piatti della mia Sicilia, preparati con la stessa passione delle nostre nonne.</p>
-                    <p>Oltre alla cena, offriamo anche servizio di asporto e corsi di cucina per imparare a preparare i nostri piatti preferiti.</p>
-                    <p>Vi aspettiamo nella nostra casa per un'esperienza culinaria indimenticabile, dove ogni piatto racconta una storia d'amore tra due culture.</p>
+                    <p>Benvenuti a Rojana, il tuo ristorante thailandese autentico a Noto. Portiamo i sapori genuini della Thailandia direttamente nella tua casa.</p>
+                    <p>La nostra storia nasce dalla passione per la cucina thailandese tradizionale, con ricette tramandate di generazione in generazione. Mia moglie thailandese prepara ogni piatto con ingredienti freschi e spezie autentiche, creando un'esperienza culinaria che ti trasporterà direttamente in Thailandia.</p>
+                    <p>Attualmente offriamo solo servizio di asporto per garantire la massima qualità e freschezza dei nostri piatti. Puoi ordinare telefonicamente o tramite WhatsApp e ritirare la tua ordinaria direttamente da noi.</p>
+                    <p>Oltre al servizio di asporto, organizziamo anche corsi di cucina thailandese per chi vuole imparare a preparare i piatti tradizionali thailandesi a casa propria.</p>
+                    <p>Vi aspettiamo per farvi provare i veri sapori della Thailandia!</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cucina siciliana e thailandese">
+                    <img src="https://images.unsplash.com/photo-1559314809-0f155186aed0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cucina Thailandese">
                 </div>
             </div>
         </div>
@@ -846,43 +840,6 @@
             <h2 class="section-title" id="daily-menu-title">Menu del Giorno</h2>
             <div class="daily-menu-container">
                 <div class="daily-menu-card">
-                    <div class="menu-header sicilian-header">
-                        <h3>Menu Siciliano del Giorno</h3>
-                        <p>€25 - Antipasto, Primo, Secondo, Dolce</p>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Antipasto: Caponata</span>
-                                <span class="menu-item-price">€8</span>
-                            </div>
-                            <p>Melanzane, sedano, cipolla e capperi in agrodolce</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span id="sicilian-primo-title">Primo: Pasta con le Sarde</span>
-                                <span class="menu-item-price">€12</span>
-                            </div>
-                            <p id="sicilian-primo-desc">Pasta con sarde, finocchietto, pinoli e uvetta</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span id="sicilian-secondo-title">Secondo: Involtini di Pesce Spada</span>
-                                <span class="menu-item-price">€16</span>
-                            </div>
-                            <p id="sicilian-secondo-desc">Pesce spada farcito con pangrattato e erbe aromatiche</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Dolce: Cannolo Siciliano</span>
-                                <span class="menu-item-price">€6</span>
-                            </div>
-                            <p>Cannolo croccante con ricotta di pecora e scorzette d'arancia</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="daily-menu-card">
                     <div class="menu-header thai-header">
                         <h3>Menu Thailandese del Giorno</h3>
                         <p>€28 - Antipasto, Zuppa, Piatto Principale, Dolce</p>
@@ -890,72 +847,31 @@
                     <div class="menu-items">
                         <div class="menu-item">
                             <div class="menu-item-title">
-                                <span>Antipasto: Tod Mun Pla</span>
-                                <span class="menu-item-price thai-price">€9</span>
+                                <span id="thai-antipasto-title">Antipasto: Tod Mun Pla</span>
+                                <span class="menu-item-price">€9</span>
                             </div>
-                            <p>Polpette di pesce speziate con salsa di cetrioli</p>
+                            <p id="thai-antipasto-desc">Polpette di pesce speziate con salsa di cetrioli</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
                                 <span id="thai-zuppa-title">Zuppa: Tom Kha Gai</span>
-                                <span class="menu-item-price thai-price">€10</span>
+                                <span class="menu-item-price">€10</span>
                             </div>
                             <p id="thai-zuppa-desc">Zuppa di cocco con pollo, galangal e lime</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
                                 <span id="thai-principale-title">Piatto Principale: Pad Thai</span>
-                                <span class="menu-item-price thai-price">€14</span>
+                                <span class="menu-item-price">€14</span>
                             </div>
                             <p id="thai-principale-desc">Spaghetti di riso saltati con gamberi, tofu e germogli di soia</p>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
                                 <span>Dolce: Mango Sticky Rice</span>
-                                <span class="menu-item-price thai-price">€7</span>
+                                <span class="menu-item-price">€7</span>
                             </div>
                             <p>Riso glutinoso con mango e salsa di cocco</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Menu Ricotta (visibile solo nel periodo natalizio) -->
-            <div class="ricotta-menu" id="ricotta-menu">
-                <div class="daily-menu-card">
-                    <div class="menu-header ricotta-header">
-                        <h3>Menu Speciale Ricotta - Periodo Natalizio</h3>
-                        <p>€30 - Solo dal 15 Dicembre al 8 Gennaio</p>
-                        <div class="seasonal-notice">SPECIALE NATALIZIO</div>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Antipasto: Ricotta fresca con miele e noci</span>
-                                <span class="menu-item-price ricotta-price">€10</span>
-                            </div>
-                            <p>Ricotta di pecora appena preparata con miele di agrumi e noci tostate</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Primo: Ravioli di ricotta e spinaci</span>
-                                <span class="menu-item-price ricotta-price">€14</span>
-                            </div>
-                            <p>Pasta fresca ripiena di ricotta e spinaci con burro e salvia</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Secondo: Sformatino di ricotta al forno</span>
-                                <span class="menu-item-price ricotta-price">€16</span>
-                            </div>
-                            <p>Sformatino di ricotta con prosciutto crudo e scorza di limone</p>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Dolce: Cassata siciliana</span>
-                                <span class="menu-item-price ricotta-price">€8</span>
-                            </div>
-                            <p>Dolce tradizionale con ricotta, pan di spagna e frutta candita</p>
                         </div>
                     </div>
                 </div>
@@ -968,75 +884,14 @@
         <div class="container">
             <h2 class="section-title">Menu Completo</h2>
             <div class="menu-tabs">
-                <button class="tab-btn active" data-category="siciliana">Cucina Siciliana</button>
-                <button class="tab-btn" data-category="thailandese">Cucina Thailandese</button>
+                <button class="tab-btn active" data-category="thailandese">Piatti Principali</button>
                 <button class="tab-btn" data-category="antipasti">Antipasti</button>
+                <button class="tab-btn" data-category="zuppe">Zuppe</button>
                 <button class="tab-btn" data-category="dolci">Dolci</button>
             </div>
             
-            <!-- Cucina Siciliana -->
-            <div class="menu-category active" id="siciliana">
-                <div class="menu-items-grid">
-                    <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pasta alla Norma">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Pasta alla Norma</h3>
-                            <p>Pasta con melanzane fritte, pomodoro, ricotta salata e basilico fresco.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Opzioni:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Spaghetti</span>
-                                    <span class="option-tag">Rigatoni</span>
-                                    <span class="option-tag">Penne</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€12</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1598214887288-8f67a6f2e5dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Arancini">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Arancini</h3>
-                            <p>Palle di riso ripiene di ragù, piselli e formaggio, fritte fino a doratura.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Ripieni:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Ragù</span>
-                                    <span class="option-tag">Burro e salvia</span>
-                                    <span class="option-tag">Spinaci</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€8 (2 pezzi)</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sarde a Beccafico">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Sarde a Beccafico</h3>
-                            <p>Sarde farcite con pangrattato, pinoli, uvetta e prezzemolo.</p>
-                            <p class="menu-item-price">€14</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Caponata">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Caponata</h3>
-                            <p>Melanzane, sedano, cipolla e capperi in agrodolce, specialità siciliana.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Formati:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Antipasto</span>
-                                    <span class="option-tag">Contorno</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€9</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Cucina Thailandese -->
-            <div class="menu-category" id="thailandese">
+            <!-- Piatti Principali -->
+            <div class="menu-category active" id="thailandese">
                 <div class="menu-items-grid">
                     <div class="menu-item-card">
                         <img src="https://images.unsplash.com/photo-1559314809-0f155186aed0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pad Thai">
@@ -1053,23 +908,6 @@
                                 </div>
                             </div>
                             <p class="menu-item-price">€13</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tom Yum Goong">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Tom Yum Goong</h3>
-                            <p>Zuppa piccante e aspra con gamberi, funghi, citronella e lime.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Piccantezza:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Mild</span>
-                                    <span class="option-tag">Medium</span>
-                                    <span class="option-tag">Hot</span>
-                                    <span class="option-tag">Thai Hot</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€11</p>
                         </div>
                     </div>
                     <div class="menu-item-card">
@@ -1090,19 +928,35 @@
                         </div>
                     </div>
                     <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Involtini Primavera">
+                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Pad See Ew">
                         <div class="menu-item-content">
-                            <h3 class="menu-item-title">Involtini Primavera</h3>
-                            <p>Crocchanti involtini ripieni di verdure e serviti con salsa agrodolce.</p>
+                            <h3 class="menu-item-title">Pad See Ew</h3>
+                            <p>Spaghetti di riso larghi saltati con salsa di soia scura e broccoli.</p>
                             <div class="menu-item-options">
-                                <div class="option-title">Ripieni:</div>
+                                <div class="option-title">Proteine:</div>
                                 <div class="option-list">
-                                    <span class="option-tag">Vegetariano</span>
-                                    <span class="option-tag">Carne</span>
-                                    <span class="option-tag">Pesce</span>
+                                    <span class="option-tag">Pollo</span>
+                                    <span class="option-tag">Manzo</span>
+                                    <span class="option-tag">Gamberi</span>
                                 </div>
                             </div>
-                            <p class="menu-item-price">€7 (4 pezzi)</p>
+                            <p class="menu-item-price">€12</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Massaman Curry">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Massaman Curry</h3>
+                            <p>Curry dolce e cremoso con patate, arachidi e carne di manzo.</p>
+                            <div class="menu-item-options">
+                                <div class="option-title">Proteine:</div>
+                                <div class="option-list">
+                                    <span class="option-tag">Manzo</span>
+                                    <span class="option-tag">Pollo</span>
+                                    <span class="option-tag">Tofu</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-price">€15</p>
                         </div>
                     </div>
                 </div>
@@ -1112,23 +966,6 @@
             <div class="menu-category" id="antipasti">
                 <div class="menu-items-grid">
                     <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Antipasto Misto">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Antipasto Misto</h3>
-                            <p>Selezione di specialità siciliane e thailandesi per iniziare il pasto.</p>
-                            <div class="menu-item-options">
-                                <div class="option-title">Contenuto:</div>
-                                <div class="option-list">
-                                    <span class="option-tag">Arancini</span>
-                                    <span class="option-tag">Involtini</span>
-                                    <span class="option-tag">Caponata</span>
-                                    <span class="option-tag">Tod Mun Pla</span>
-                                </div>
-                            </div>
-                            <p class="menu-item-price">€15</p>
-                        </div>
-                    </div>
-                    <div class="menu-item-card">
                         <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Involtini Primavera">
                         <div class="menu-item-content">
                             <h3 class="menu-item-title">Involtini Primavera</h3>
@@ -1145,22 +982,31 @@
                         </div>
                     </div>
                     <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1598214887288-8f67a6f2e5dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Caponata">
+                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Satay">
                         <div class="menu-item-content">
-                            <h3 class="menu-item-title">Caponata</h3>
-                            <p>Melanzane, sedano, cipolla e capperi in agrodolce, specialità siciliana.</p>
+                            <h3 class="menu-item-title">Satay</h3>
+                            <p>Spiedini di pollo alla griglia con salsa di arachidi.</p>
                             <div class="menu-item-options">
-                                <div class="option-title">Formati:</div>
+                                <div class="option-title">Varianti:</div>
                                 <div class="option-list">
-                                    <span class="option-tag">Antipasto</span>
-                                    <span class="option-tag">Contorno</span>
+                                    <span class="option-tag">Pollo</span>
+                                    <span class="option-tag">Manzo</span>
+                                    <span class="option-tag">Maiale</span>
                                 </div>
                             </div>
-                            <p class="menu-item-price">€9</p>
+                            <p class="menu-item-price">€8 (4 pezzi)</p>
                         </div>
                     </div>
                     <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ravioli Cinesi">
+                        <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tod Mun Pla">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Tod Mun Pla</h3>
+                            <p>Polpette di pesce speziate con salsa di cetrioli.</p>
+                            <p class="menu-item-price">€9 (6 pezzi)</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Ravioli Cinesi">
                         <div class="menu-item-content">
                             <h3 class="menu-item-title">Ravioli Cinesi (Gyoza)</h3>
                             <p>Ravioli al vapore o fritti ripieni di carne o verdure.</p>
@@ -1180,17 +1026,72 @@
                 </div>
             </div>
             
+            <!-- Zuppe -->
+            <div class="menu-category" id="zuppe">
+                <div class="menu-items-grid">
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tom Yum Goong">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Tom Yum Goong</h3>
+                            <p>Zuppa piccante e aspra con gamberi, funghi, citronella e lime.</p>
+                            <div class="menu-item-options">
+                                <div class="option-title">Piccantezza:</div>
+                                <div class="option-list">
+                                    <span class="option-tag">Mild</span>
+                                    <span class="option-tag">Medium</span>
+                                    <span class="option-tag">Hot</span>
+                                    <span class="option-tag">Thai Hot</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-price">€11</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tom Kha Gai">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Tom Kha Gai</h3>
+                            <p>Zuppa di cocco con pollo, galangal, funghi e lime.</p>
+                            <div class="menu-item-options">
+                                <div class="option-title">Piccantezza:</div>
+                                <div class="option-list">
+                                    <span class="option-tag">Mild</span>
+                                    <span class="option-tag">Medium</span>
+                                    <span class="option-tag">Hot</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-price">€10</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tom Yum Talay">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Tom Yum Talay</h3>
+                            <p>Zuppa piccante con misto di frutti di mare.</p>
+                            <div class="menu-item-options">
+                                <div class="option-title">Piccantezza:</div>
+                                <div class="option-list">
+                                    <span class="option-tag">Mild</span>
+                                    <span class="option-tag">Medium</span>
+                                    <span class="option-tag">Hot</span>
+                                </div>
+                            </div>
+                            <p class="menu-item-price">€13</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Tom Jued">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Tom Jued</h3>
+                            <p>Zuppa leggera con tofu, verdure e carne di maiale macinata.</p>
+                            <p class="menu-item-price">€9</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             <!-- Dolci -->
             <div class="menu-category" id="dolci">
                 <div class="menu-items-grid">
-                    <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cannolo Siciliano">
-                        <div class="menu-item-content">
-                            <h3 class="menu-item-title">Cannolo Siciliano</h3>
-                            <p>Cannolo croccante con ricotta di pecora e scorzette d'arancia.</p>
-                            <p class="menu-item-price">€6</p>
-                        </div>
-                    </div>
                     <div class="menu-item-card">
                         <img src="https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Mango Sticky Rice">
                         <div class="menu-item-content">
@@ -1200,19 +1101,27 @@
                         </div>
                     </div>
                     <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Cassata Siciliana">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Thai Custard">
                         <div class="menu-item-content">
-                            <h3 class="menu-item-title">Cassata Siciliana</h3>
-                            <p>Dolce a base di pan di spagna, ricotta e frutta candita.</p>
-                            <p class="menu-item-price">€7</p>
+                            <h3 class="menu-item-title">Thai Custard</h3>
+                            <p>Budino di cocco e zucca al vapore.</p>
+                            <p class="menu-item-price">€6</p>
                         </div>
                     </div>
                     <div class="menu-item-card">
-                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sfinci">
+                        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Banana in Coconut Milk">
                         <div class="menu-item-content">
-                            <h3 class="menu-item-title">Sfinci</h3>
-                            <p>Frittelle dolci siciliane ricoperte di zucchero e cannella.</p>
-                            <p class="menu-item-price">€5 (3 pezzi)</p>
+                            <h3 class="menu-item-title">Banana in Coconut Milk</h3>
+                            <p>Banane cotte in latte di cocco dolce.</p>
+                            <p class="menu-item-price">€6</p>
+                        </div>
+                    </div>
+                    <div class="menu-item-card">
+                        <img src="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Thai Iced Tea">
+                        <div class="menu-item-content">
+                            <h3 class="menu-item-title">Thai Iced Tea</h3>
+                            <p>Tè thailandese dolce con latte condensato.</p>
+                            <p class="menu-item-price">€4</p>
                         </div>
                     </div>
                 </div>
@@ -1223,14 +1132,14 @@
     <!-- Corsi di Cucina -->
     <section id="courses">
         <div class="container">
-            <h2 class="section-title">Corsi di Cucina</h2>
+            <h2 class="section-title">Corsi di Cucina Thailandese</h2>
             <div class="courses-container">
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Cucina Thailandese">
+                        <img src="https://images.unsplash.com/photo-1559314809-0f155186aed0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Cucina Thailandese Base">
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Corsi di Cucina Thailandese</h3>
+                        <h3 class="course-title">Cucina Thailandese Base</h3>
                         <span class="course-type thai">Thailandese</span>
                         <div class="course-details">
                             <p><strong>Durata:</strong> 3 ore</p>
@@ -1239,52 +1148,52 @@
                             <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
                             <p><strong>Costo:</strong> €60 a persona</p>
                         </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Cucina%20Thailandese" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Cucina%20Thailandese%20Base" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
                     </div>
                 </div>
                 
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1598214887288-8f67a6f2e5dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Cucina Siciliana">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Curry Thailandesi">
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Cucina Siciliana Tradizionale</h3>
-                        <span class="course-type sicilian">Siciliana</span>
-                        <div class="course-details">
-                            <p><strong>Durata:</strong> 4 ore</p>
-                            <p><strong>Livello:</strong> Principiante/Intermedio</p>
-                            <p><strong>Imparerai:</strong> Arancini, Pasta alla Norma, Sfincione</p>
-                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
-                            <p><strong>Costo:</strong> €70 a persona</p>
-                        </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Cucina%20Siciliana%20Tradizionale" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
-                    </div>
-                </div>
-                
-                <div class="course-card">
-                    <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Pasta Fresca">
-                    </div>
-                    <div class="course-content">
-                        <h3 class="course-title">Pasta Fresca e Ravioli</h3>
-                        <span class="course-type sicilian">Siciliana</span>
+                        <h3 class="course-title">Curry Thailandesi</h3>
+                        <span class="course-type thai">Thailandese</span>
                         <div class="course-details">
                             <p><strong>Durata:</strong> 3.5 ore</p>
                             <p><strong>Livello:</strong> Intermedio</p>
-                            <p><strong>Imparerai:</strong> Pasta fresca, ravioli siciliani, ripieni</p>
+                            <p><strong>Imparerai:</strong> Green Curry, Red Curry, Massaman Curry</p>
                             <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
-                            <p><strong>Costo:</strong> €65 a persona</p>
+                            <p><strong>Costo:</strong> €70 a persona</p>
                         </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Pasta%20Fresca%20e%20Ravioli" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Curry%20Thailandesi" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
+                    </div>
+                </div>
+                
+                <div class="course-card">
+                    <div class="course-image">
+                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Street Food Thailandese">
+                    </div>
+                    <div class="course-content">
+                        <h3 class="course-title">Street Food Thailandese</h3>
+                        <span class="course-type thai">Thailandese</span>
+                        <div class="course-details">
+                            <p><strong>Durata:</strong> 4 ore</p>
+                            <p><strong>Livello:</strong> Principiante/Intermedio</p>
+                            <p><strong>Imparerai:</strong> Pad See Ew, Satay, Mango Sticky Rice</p>
+                            <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
+                            <p><strong>Costo:</strong> €75 a persona</p>
+                        </div>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Street%20Food%20Thailandese" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
                     </div>
                 </div>
 
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1587334986756-f87d7ce3e35c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Ravioli Cinesi">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Corso di Antipasti Thailandesi">
                     </div>
                     <div class="course-content">
-                        <h3 class="course-title">Ravioli Cinesi e Involtini</h3>
+                        <h3 class="course-title">Antipasti Thailandesi</h3>
                         <span class="course-type thai">Thailandese</span>
                         <div class="course-details">
                             <p><strong>Durata:</strong> 3 ore</p>
@@ -1293,7 +1202,7 @@
                             <p><strong>Partecipanti:</strong> Max 6-8 persone</p>
                             <p><strong>Costo:</strong> €55 a persona</p>
                         </div>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Ravioli%20Cinesi%20e%20Involtini" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
+                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20corso%20di%20Antipasti%20Thailandesi" class="btn btn-whatsapp" target="_blank">Info e Prenotazioni</a>
                     </div>
                 </div>
             </div>
@@ -1303,36 +1212,26 @@
     <!-- Prenotazioni e Asporto -->
     <section id="reservations">
         <div class="container">
-            <h2 class="section-title">Prenotazioni e Asporto</h2>
+            <h2 class="section-title">Ordina Asporto</h2>
             <div class="reservation-container">
                 <div class="reservation-info">
-                    <h3>Prenota il tuo tavolo o ordina asporto</h3>
-                    <p>Per prenotare un tavolo al nostro home restaurant o ordinare cibo da asporto, compila il modulo o contattaci direttamente su WhatsApp.</p>
+                    <h3>Ordina il tuo cibo thailandese da asporto</h3>
+                    <p>Per ordinare il tuo cibo thailandese da asporto, compila il modulo o contattaci direttamente su WhatsApp.</p>
                     
                     <div class="reservation-options">
-                        <div class="reservation-option" id="option-dinein">
+                        <div class="reservation-option disabled">
                             <i class="fas fa-utensils"></i>
                             <h4>Cena in Locale</h4>
-                            <p>Prenota un tavolo per una cena indimenticabile</p>
+                            <p>⚠️ Temporaneamente non disponibile</p>
                         </div>
-                        <div class="reservation-option" id="option-takeaway">
+                        <div class="reservation-option selected" id="option-takeaway">
                             <i class="fas fa-box"></i>
                             <h4>Asporto</h4>
                             <p>Ordina il tuo cibo preferito da portare a casa</p>
                         </div>
                     </div>
                     
-                    <div id="dinein-info">
-                        <p><strong>Esperienza in locale:</strong></p>
-                        <ul>
-                            <li>Menu fisso o alla carta</li>
-                            <li>Massimo 6-8 persone per serata</li>
-                            <li>Atmosfera intima e familiare</li>
-                            <li>Possibilità di scegliere tra cucina siciliana e thailandese</li>
-                        </ul>
-                    </div>
-                    
-                    <div id="takeaway-info" style="display: none;">
+                    <div id="takeaway-info">
                         <p><strong>Servizio di asporto:</strong></p>
                         <ul>
                             <li>Ordina telefonicamente o via WhatsApp</li>
@@ -1341,17 +1240,10 @@
                             <li>Consegna a domicilio disponibile nella zona (minimo €25)</li>
                         </ul>
                     </div>
-
-                    <div class="ricotta-info">
-                        <p><strong>Menu Speciale Ricotta:</strong></p>
-                        <p>Disponibile solo dal <strong>15 Dicembre al 8 Gennaio</strong></p>
-                        <p>Prenota ora il tuo menu natalizio a base di ricotta fresca!</p>
-                        <a href="https://wa.me/393384461593?text=Mi%20interessa%20il%20Menu%20Speciale%20Ricotta%20natalizio" class="btn btn-ricotta" target="_blank" id="ricotta-button">Prenota Menu Ricotta</a>
-                    </div>
                     
                     <div class="whatsapp-info">
-                        <p><strong>Prenotazione diretta via WhatsApp:</strong></p>
-                        <a href="https://wa.me/393384461593?text=Ciao%20Rojana,%20vorrei%20prenotare%20un%20tavolo!" class="btn btn-whatsapp" target="_blank">Scrivici su WhatsApp</a>
+                        <p><strong>Ordine diretto via WhatsApp:</strong></p>
+                        <a href="https://wa.me/393384461593?text=Ciao%20Rojana,%20vorrei%20ordinare%20asporto!" class="btn btn-whatsapp" target="_blank">Ordina su WhatsApp</a>
                     </div>
                 </div>
                 <div class="reservation-form-container">
@@ -1369,9 +1261,11 @@
                             <input type="date" id="date" name="date" required>
                         </div>
                         <div class="form-group">
-                            <label for="time">Orario</label>
+                            <label for="time">Orario Ritiro</label>
                             <select id="time" name="time" required>
                                 <option value="">Seleziona orario</option>
+                                <option value="18:00">18:00</option>
+                                <option value="18:30">18:30</option>
                                 <option value="19:00">19:00</option>
                                 <option value="19:30">19:30</option>
                                 <option value="20:00">20:00</option>
@@ -1382,71 +1276,51 @@
                         <div class="form-group">
                             <label for="service-type">Tipo di Servizio</label>
                             <select id="service-type" name="service-type" required>
-                                <option value="">Seleziona</option>
-                                <option value="cena">Cena in Locale</option>
-                                <option value="asporto">Asporto</option>
+                                <option value="asporto" selected>Asporto</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="guests">Numero di Ospiti (per cena in locale)</label>
-                            <select id="guests" name="guests">
-                                <option value="">Seleziona numero</option>
-                                <option value="1">1 persona</option>
-                                <option value="2">2 persone</option>
-                                <option value="3">3 persone</option>
-                                <option value="4">4 persone</option>
-                                <option value="5">5 persone</option>
-                                <option value="6">6 persone</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="cuisine">Preferenza Cucina</label>
-                            <select id="cuisine" name="cuisine">
-                                <option value="">Nessuna preferenza</option>
-                                <option value="siciliana">Siciliana</option>
-                                <option value="thailandese">Thailandese</option>
-                                <option value="entrambe">Entrambe</option>
-                                <option value="ricotta" id="ricotta-option">Speciale Ricotta (15/12 - 08/01)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Piatti Richiesti (per asporto)</label>
+                            <label>Piatti Richiesti</label>
                             <div class="checkbox-group">
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="caponata" name="dishes" value="caponata">
-                                    <label for="caponata">Caponata</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="arancini" name="dishes" value="arancini">
-                                    <label for="arancini">Arancini</label>
-                                </div>
-                                <div class="checkbox-option">
-                                    <input type="checkbox" id="pasta-norma" name="dishes" value="pasta-norma">
-                                    <label for="pasta-norma">Pasta alla Norma</label>
-                                </div>
                                 <div class="checkbox-option">
                                     <input type="checkbox" id="involtini" name="dishes" value="involtini">
                                     <label for="involtini">Involtini Primavera</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="satay" name="dishes" value="satay">
+                                    <label for="satay">Satay</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="tod-mun" name="dishes" value="tod-mun">
+                                    <label for="tod-mun">Tod Mun Pla</label>
                                 </div>
                                 <div class="checkbox-option">
                                     <input type="checkbox" id="pad-thai" name="dishes" value="pad-thai">
                                     <label for="pad-thai">Pad Thai</label>
                                 </div>
                                 <div class="checkbox-option">
-                                    <input type="checkbox" id="ravioli" name="dishes" value="ravioli">
-                                    <label for="ravioli">Ravioli Cinesi</label>
+                                    <input type="checkbox" id="green-curry" name="dishes" value="green-curry">
+                                    <label for="green-curry">Green Curry</label>
                                 </div>
                                 <div class="checkbox-option">
-                                    <input type="checkbox" id="curry" name="dishes" value="curry">
-                                    <label for="curry">Green Curry</label>
+                                    <input type="checkbox" id="massaman" name="dishes" value="massaman">
+                                    <label for="massaman">Massaman Curry</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="tom-yum" name="dishes" value="tom-yum">
+                                    <label for="tom-yum">Tom Yum Goong</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="checkbox" id="mango-rice" name="dishes" value="mango-rice">
+                                    <label for="mango-rice">Mango Sticky Rice</label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="message">Note Speciali (allergie, preferenze, ecc.)</label>
+                            <label for="message">Note Speciali (allergie, piccantezza, ecc.)</label>
                             <textarea id="message" name="message" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="btn">Invia Richiesta</button>
+                        <button type="submit" class="btn">Invia Ordine</button>
                     </form>
                 </div>
             </div>
@@ -1458,12 +1332,11 @@
         <div class="container">
             <h2 class="section-title">La Nostra Galleria</h2>
             <div class="gallery-grid">
-                <!-- Sostituisci questi URL con i link alle tue 2 foto -->
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/600x400/FFA500/FFFFFF?text=La+Tua+Prima+Foto+Qui" alt="Rojana - Prima foto del ristorante">
+                    <img src="https://images.unsplash.com/photo-1559314809-0f155186aed0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rojana - Pad Thai">
                 </div>
                 <div class="gallery-item">
-                    <img src="https://via.placeholder.com/600x400/C41E3A/FFFFFF?text=La+Tua+Seconda+Foto+Qui" alt="Rojana - Seconda foto del ristorante">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rojana - Green Curry">
                 </div>
             </div>
         </div>
@@ -1500,8 +1373,6 @@
                             <i class="fas fa-clock"></i>
                             <div>
                                 <p><strong>Orari di apertura:</strong></p>
-                                <p>Pranzo: Sabato e Domenica - 12:00 - 15:00</p>
-                                <p>Cena: Da Martedì a Domenica - 19:00 - 23:00</p>
                                 <p>Asporto: 18:00 - 21:30</p>
                                 <p>Lunedì: Chiuso</p>
                             </div>
@@ -1509,7 +1380,7 @@
                         <div class="contact-item">
                             <i class="fab fa-whatsapp"></i>
                             <div>
-                                <p><strong>Prenotazioni WhatsApp:</strong></p>
+                                <p><strong>Ordini WhatsApp:</strong></p>
                                 <a href="https://wa.me/393384461593" class="btn btn-whatsapp" target="_blank">Scrivici su WhatsApp</a>
                             </div>
                         </div>
@@ -1517,8 +1388,7 @@
                 </div>
                 <div class="map">
                     <h3>Dove Siamo</h3>
-                    <!-- Sostituisci con il tuo embed di Google Maps -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.95373531584498!3d-37.81627944202177!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8a32d5f5b3e!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1627610632474!5m2!1sen!2sau" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3141.116366033977!2d15.070258315803433!3d36.89018897972415!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1313d4b6d5d5d5d5%3A0x5e5e5e5e5e5e5e5e!2sNoto%2C%20Free%20Municipal%20Consortium%20of%20Syracuse%2C%20Italy!5e0!3m2!1sen!2sit!4v1627610632474!5m2!1sen!2sit" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -1532,7 +1402,7 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
-            <p>&copy; 2023 Rojana Home Restaurant - Cucina Tradizionale Siciliana e Thailandese. Tutti i diritti riservati.</p>
+            <p>&copy; 2023 Rojana Home Restaurant - Cucina Thailandese Autentica. Tutti i diritti riservati.</p>
             <p>Contrada Spaccazza - Noto (SR) | Tel: 338 446 1593</p>
         </div>
     </footer>
@@ -1558,68 +1428,23 @@
                 });
             });
             
-            // Gestione opzioni prenotazione/asporto
-            const dineinOption = document.getElementById('option-dinein');
+            // Imposta asporto come unica opzione disponibile
             const takeawayOption = document.getElementById('option-takeaway');
-            const dineinInfo = document.getElementById('dinein-info');
-            const takeawayInfo = document.getElementById('takeaway-info');
             const serviceTypeSelect = document.getElementById('service-type');
-            const ricottaMenu = document.getElementById('ricotta-menu');
-            const ricottaButton = document.getElementById('ricotta-button');
-            const ricottaOption = document.getElementById('ricotta-option');
             
-            dineinOption.addEventListener('click', function() {
-                dineinOption.classList.add('selected');
-                takeawayOption.classList.remove('selected');
-                dineinInfo.style.display = 'block';
-                takeawayInfo.style.display = 'none';
-                serviceTypeSelect.value = 'cena';
-            });
+            // Disabilita la selezione di cena in locale
+            takeawayOption.classList.add('selected');
+            serviceTypeSelect.value = 'asporto';
+            serviceTypeSelect.disabled = true;
             
-            takeawayOption.addEventListener('click', function() {
-                takeawayOption.classList.add('selected');
-                dineinOption.classList.remove('selected');
-                takeawayInfo.style.display = 'block';
-                dineinInfo.style.display = 'none';
-                serviceTypeSelect.value = 'asporto';
-            });
-            
-            // Imposta opzione predefinita
-            dineinOption.classList.add('selected');
-            
-            // Gestione menu ricotta (visibile solo nel periodo natalizio)
-            const today = new Date();
-            const currentMonth = today.getMonth() + 1; // 1-12
-            const currentDay = today.getDate(); // 1-31
-
-            // Mostra menu ricotta solo dal 15 dicembre al 8 gennaio
-            const isRicottaPeriod = (currentMonth === 12 && currentDay >= 15) || 
-                                   (currentMonth === 1 && currentDay <= 8);
-            
-            if (isRicottaPeriod) {
-                ricottaMenu.classList.add('active');
-                // Abilita il pulsante ricotta
-                ricottaButton.style.display = 'inline-block';
-                // Mostra opzione ricotta nel select
-                ricottaOption.style.display = 'block';
-            } else {
-                ricottaMenu.classList.remove('active');
-                // Disabilita il pulsante ricotta
-                ricottaButton.style.display = 'none';
-                // Nascondi opzione ricotta nel select
-                ricottaOption.style.display = 'none';
-            }
-
-            // Gestione del form di prenotazione
+            // Gestione del form di ordinazione
             const bookingForm = document.getElementById('booking-form');
             if (bookingForm) {
                 bookingForm.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    // Controlla se è nel periodo ricotta
-                    const cuisine = document.getElementById('cuisine').value;
-                    if (cuisine === 'ricotta' && !isRicottaPeriod) {
-                        alert('Il Menu Speciale Ricotta è disponibile solo dal 15 Dicembre al 8 Gennaio');
+                    // Validazione del form
+                    if (!validateBookingForm()) {
                         return;
                     }
                     
@@ -1628,11 +1453,9 @@
                     const phone = document.getElementById('phone').value;
                     const date = document.getElementById('date').value;
                     const time = document.getElementById('time').value;
-                    const serviceType = document.getElementById('service-type').value;
-                    const guests = document.getElementById('guests').value;
                     const message = document.getElementById('message').value;
                     
-                    // Raccogli i piatti selezionati per asporto
+                    // Raccogli i piatti selezionati
                     const selectedDishes = [];
                     const dishCheckboxes = document.querySelectorAll('input[name="dishes"]:checked');
                     dishCheckboxes.forEach(checkbox => {
@@ -1640,26 +1463,16 @@
                     });
                     
                     // Crea il messaggio per WhatsApp
-                    let whatsappMessage = `Ciao Rojana, vorrei ${serviceType === 'cena' ? 'prenotare un tavolo' : 'ordinare asporto'}!%0A%0A`;
+                    let whatsappMessage = `Ciao Rojana, vorrei ordinare asporto!%0A%0A`;
                     whatsappMessage += `*Nome:* ${name}%0A`;
                     whatsappMessage += `*Telefono:* ${phone}%0A`;
-                    whatsappMessage += `*Data:* ${date}%0A`;
-                    
-                    if (serviceType === 'cena') {
-                        whatsappMessage += `*Orario:* ${time}%0A`;
-                        if (guests) {
-                            whatsappMessage += `*Numero ospiti:* ${guests}%0A`;
-                        }
-                    } else {
-                        whatsappMessage += `*Orario ritiro:* ${time}%0A`;
-                    }
-                    
-                    if (cuisine) {
-                        whatsappMessage += `*Preferenza cucina:* ${cuisine}%0A`;
-                    }
+                    whatsappMessage += `*Data ritiro:* ${date}%0A`;
+                    whatsappMessage += `*Orario ritiro:* ${time}%0A`;
                     
                     if (selectedDishes.length > 0) {
                         whatsappMessage += `*Piatti richiesti:* ${selectedDishes.join(', ')}%0A`;
+                    } else {
+                        whatsappMessage += `*Piatti richiesti:* Da definire%0A`;
                     }
                     
                     if (message) {
@@ -1671,10 +1484,7 @@
                     
                     // Reset del form
                     this.reset();
-                    dineinOption.classList.add('selected');
-                    takeawayOption.classList.remove('selected');
-                    dineinInfo.style.display = 'block';
-                    takeawayInfo.style.display = 'none';
+                    takeawayOption.classList.add('selected');
                 });
             }
             
@@ -1693,24 +1503,44 @@
                 dateInput.setAttribute('min', formattedToday);
             }
             
-            // Aggiorna dinamicamente il form in base al tipo di servizio
-            serviceTypeSelect.addEventListener('change', function() {
-                if (this.value === 'asporto') {
-                    takeawayOption.classList.add('selected');
-                    dineinOption.classList.remove('selected');
-                    takeawayInfo.style.display = 'block';
-                    dineinInfo.style.display = 'none';
-                } else {
-                    dineinOption.classList.add('selected');
-                    takeawayOption.classList.remove('selected');
-                    dineinInfo.style.display = 'block';
-                    takeawayInfo.style.display = 'none';
-                }
-            });
-
             // Menu del giorno che cambia automaticamente
             updateDailyMenu();
+            highlightCurrentDay();
         });
+
+        // Funzione per validare il form
+        function validateBookingForm() {
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            
+            if (!name || !phone || !date || !time) {
+                alert('Per favore, compila tutti i campi obbligatori');
+                return false;
+            }
+            
+            // Validazione telefono italiano
+            const phoneRegex = /^[0-9]{10}$/;
+            if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
+                alert('Inserisci un numero di telefono valido (10 cifre)');
+                return false;
+            }
+            
+            return true;
+        }
+
+        // Funzione per evidenziare il giorno corrente
+        function highlightCurrentDay() {
+            const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
+            const today = new Date().getDay();
+            
+            // Aggiungi un indicatore visivo per il giorno corrente
+            const menuTitle = document.getElementById('daily-menu-title');
+            if (menuTitle) {
+                menuTitle.innerHTML = `Menu del Giorno - <span class="current-day">${days[today]}</span>`;
+            }
+        }
 
         // Funzione per cambiare il menu del giorno automaticamente
         function updateDailyMenu() {
@@ -1718,112 +1548,73 @@
             const today = new Date();
             const dayOfWeek = today.getDay();
             
-            const sicilianMenus = {
-                0: { // Domenica
-                    primo: "Pasta con le Sarde",
-                    secondo: "Involtini di Pesce Spada",
-                    descPrimo: "Pasta con sarde, finocchietto, pinoli e uvetta",
-                    descSecondo: "Pesce spada farcito con pangrattato e erbe aromatiche"
-                },
-                1: { // Lunedì - CHIUSO
-                    primo: "Riposo settimanale",
-                    secondo: "Riposo settimanale",
-                    descPrimo: "Siamo chiusi il lunedì",
-                    descSecondo: "Ci rivediamo martedì!"
-                },
-                2: { // Martedì
-                    primo: "Pasta alla Norma",
-                    secondo: "Sarde a Beccafico", 
-                    descPrimo: "Pasta con melanzane fritte, pomodoro e ricotta salata",
-                    descSecondo: "Sarde farcite con pangrattato, pinoli e uvetta"
-                },
-                3: { // Mercoledì
-                    primo: "Spaghetti ai Ricci",
-                    secondo: "Polpette al Sugo",
-                    descPrimo: "Spaghetti con ricci di mare freschi",
-                    descSecondo: "Polpette di carne in sugo di pomodoro"
-                },
-                4: { // Giovedì
-                    primo: "Pasta con i Broccoli",
-                    secondo: "Salsiccia alla Brace",
-                    descPrimo: "Pasta con broccoli arriminati",
-                    descSecondo: "Salsiccia siciliana alla griglia"
-                },
-                5: { // Venerdì
-                    primo: "Risotto ai Frutti di Mare",
-                    secondo: "Frittura di Paranza",
-                    descPrimo: "Risotto cremoso con misto di frutti di mare",
-                    descSecondo: "Frittura mista di pesce fresco"
-                },
-                6: { // Sabato
-                    primo: "Lasagna Siciliana",
-                    secondo: "Arrosto di Maiale",
-                    descPrimo: "Lasagna con ragù, piselli e ricotta",
-                    descSecondo: "Arrosto di maiale con patate al forno"
-                }
-            };
-
             const thaiMenus = {
                 0: { // Domenica
-                    principale: "Pad Thai Classico",
+                    antipasto: "Tod Mun Pla",
                     zuppa: "Tom Yum Goong",
-                    descPrincipale: "Spaghetti di riso con gamberi, tofu e germogli",
-                    descZuppa: "Zuppa piccante con gamberi e citronella"
+                    principale: "Pad Thai Classico",
+                    descAntipasto: "Polpette di pesce speziate con salsa di cetrioli",
+                    descZuppa: "Zuppa piccante con gamberi e citronella",
+                    descPrincipale: "Spaghetti di riso con gamberi, tofu e germogli"
                 },
                 1: { // Lunedì - CHIUSO
-                    principale: "Riposo settimanale",
+                    antipasto: "Riposo settimanale",
                     zuppa: "Riposo settimanale", 
-                    descPrincipale: "Siamo chiusi il lunedì",
-                    descZuppa: "Ci rivediamo martedì!"
+                    principale: "Riposo settimanale",
+                    descAntipasto: "Siamo chiusi il lunedì",
+                    descZuppa: "Ci rivediamo martedì!",
+                    descPrincipale: "Ci rivediamo martedì!"
                 },
                 2: { // Martedì
-                    principale: "Green Curry",
+                    antipasto: "Involtini Primavera",
                     zuppa: "Tom Kha Gai",
-                    descPrincipale: "Curry verde con pollo e melanzane thailandesi",
-                    descZuppa: "Zuppa di cocco con pollo e galangal"
+                    principale: "Green Curry",
+                    descAntipasto: "Crocchanti involtini ripieni di verdure",
+                    descZuppa: "Zuppa di cocco con pollo e galangal",
+                    descPrincipale: "Curry verde con pollo e melanzane thailandesi"
                 },
                 3: { // Mercoledì
-                    principale: "Pad See Ew",
+                    antipasto: "Satay di Pollo",
                     zuppa: "Tom Yum Talay",
-                    descPrincipale: "Spaghetti di riso saltati con carne di manzo",
-                    descZuppa: "Zuppa piccante con misto di mare"
+                    principale: "Pad See Ew",
+                    descAntipasto: "Spiedini di pollo con salsa di arachidi",
+                    descZuppa: "Zuppa piccante con misto di mare",
+                    descPrincipale: "Spaghetti di riso larghi saltati con manzo"
                 },
                 4: { // Giovedì
-                    principale: "Massaman Curry",
+                    antipasto: "Ravioli Cinesi",
                     zuppa: "Tom Jued",
-                    descPrincipale: "Curry dolce con patate e arachidi",
-                    descZuppa: "Zuppa leggera con tofu e verdure"
+                    principale: "Massaman Curry",
+                    descAntipasto: "Ravioli al vapore ripieni di carne",
+                    descZuppa: "Zuppa leggera con tofu e verdure",
+                    descPrincipale: "Curry dolce con patate e arachidi"
                 },
                 5: { // Venerdì
-                    principale: "Khao Soi",
+                    antipasto: "Tod Mun Pla",
                     zuppa: "Tom Sab",
-                    descPrincipale: "Spaghetti di uovo in curry con cocco",
-                    descZuppa: "Zuppa alle erbe thailandesi"
+                    principale: "Khao Soi",
+                    descAntipasto: "Polpette di pesce speziate",
+                    descZuppa: "Zuppa alle erbe thailandesi",
+                    descPrincipale: "Spaghetti di uovo in curry con cocco"
                 },
                 6: { // Sabato
-                    principale: "Panang Curry", 
+                    antipasto: "Involtini Primavera", 
                     zuppa: "Kaeng Liang",
-                    descPrincipale: "Curry cremoso con manzo e lime",
-                    descZuppa: "Zuppa di verdure e gamberi"
+                    principale: "Panang Curry",
+                    descAntipasto: "Crocchanti involtini ripieni di verdure",
+                    descZuppa: "Zuppa di verdure e gamberi",
+                    descPrincipale: "Curry cremoso con manzo e lime"
                 }
             };
-
-            // Aggiorna menu siciliano
-            const sicilianMenu = sicilianMenus[dayOfWeek];
-            document.getElementById('sicilian-primo-title').textContent = `Primo: ${sicilianMenu.primo}`;
-            document.getElementById('sicilian-primo-desc').textContent = sicilianMenu.descPrimo;
-            document.getElementById('sicilian-secondo-title').textContent = `Secondo: ${sicilianMenu.secondo}`;
-            document.getElementById('sicilian-secondo-desc').textContent = sicilianMenu.descSecondo;
 
             // Aggiorna menu thailandese
             const thaiMenu = thaiMenus[dayOfWeek];
-            document.getElementById('thai-principale-title').textContent = `Piatto Principale: ${thaiMenu.principale}`;
-            document.getElementById('thai-principale-desc').textContent = thaiMenu.descPrincipale;
+            document.getElementById('thai-antipasto-title').textContent = `Antipasto: ${thaiMenu.antipasto}`;
+            document.getElementById('thai-antipasto-desc').textContent = thaiMenu.descAntipasto;
             document.getElementById('thai-zuppa-title').textContent = `Zuppa: ${thaiMenu.zuppa}`;
             document.getElementById('thai-zuppa-desc').textContent = thaiMenu.descZuppa;
-
-            // Aggiorna il giorno della settimana
-            document.getElementById('daily-menu-title').innerHTML = `Menu del Giorno - <span style="color: var(--sicilian-orange)">${days[dayOfWeek]}</span>`;
+            document.getElementById('thai-principale-title').textContent = `Piatto Principale: ${thaiMenu.principale}`;
+            document.getElementById('thai-principale-desc').textContent = thaiMenu.descPrincipale;
         }
     </script>
 </body>
