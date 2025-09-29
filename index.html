@@ -100,7 +100,7 @@
         
         /* Header */
         header {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('foto-front.JPG');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -183,14 +183,20 @@
             bottom: 20px;
             right: 20px;
             background-color: var(--thai-red);
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .home-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--thai-orange);
         }
         
         nav ul {
@@ -451,7 +457,7 @@
         
         .menu-item-card img {
             width: 100%;
-            height: 180px;
+            height: 200px;
             object-fit: cover;
         }
         
@@ -557,72 +563,6 @@
         
         .course-details p {
             margin-bottom: 5px;
-        }
-        
-        /* Prenotazioni e Ordini */
-        #reservations {
-            background-color: var(--white);
-        }
-        
-        .reservation-container {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .reservation-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .reservation-options {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
-        .reservation-option {
-            flex: 1;
-            text-align: center;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-        }
-        
-        .reservation-option.disabled {
-            cursor: not-allowed;
-            opacity: 0.6;
-        }
-        
-        .reservation-option.selected {
-            border-color: var(--thai-red);
-            background-color: rgba(196, 30, 58, 0.1);
-        }
-        
-        .reservation-option i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: var(--thai-red);
-        }
-        
-        .whatsapp-info {
-            background-color: rgba(37, 211, 102, 0.1);
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .closed-notice {
-            background-color: rgba(255, 0, 0, 0.1);
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: center;
-            border: 1px solid #ff0000;
         }
         
         /* Galleria */
@@ -732,7 +672,7 @@
         
         .whatsapp-float {
             position: fixed;
-            bottom: 80px;
+            bottom: 90px;
             right: 30px;
             background: #25D366;
             color: white;
@@ -802,7 +742,7 @@
                 margin-bottom: 10px;
             }
 
-            .about-content, .reservation-container, .contact-container, .daily-menu-container {
+            .about-content, .contact-container, .daily-menu-container {
                 flex-direction: column;
             }
             
@@ -834,21 +774,12 @@
                 text-align: center;
             }
             
-            .menu-tabs {
-                flex-direction: column;
-                align-items: center;
-            }
-            
             .hero-decoration {
                 display: none;
             }
             
             .section-title {
                 font-size: 2rem;
-            }
-            
-            .reservation-options {
-                flex-direction: column;
             }
 
             .gallery-grid {
@@ -870,6 +801,13 @@
             .home-btn {
                 bottom: 20px;
                 right: 20px;
+                width: 55px;
+                height: 55px;
+            }
+
+            .whatsapp-float {
+                bottom: 85px;
+                right: 20px;
             }
         }
 
@@ -885,6 +823,12 @@
             nav a {
                 padding: 8px 12px;
                 font-size: 0.8rem;
+            }
+
+            .home-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
         }
 
@@ -903,7 +847,7 @@
     </a>
 
     <!-- Home Button - Always visible -->
-    <a href="#" class="home-btn">
+    <a href="#" class="home-btn" id="homeButton">
         <i class="fas fa-home"></i>
     </a>
 
@@ -955,7 +899,7 @@
                     <p>Vi aspettiamo per farvi provare i veri sapori della Thailandia!</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1559305289-0f8e5db8c373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rojana - Cucina Thailandese">
+                    <img src="foto-chisiamo.JPG" alt="Rojana - Cucina Thailandese">
                 </div>
             </div>
         </div>
@@ -1286,6 +1230,7 @@
             updateDailyMenu();
             highlightCurrentDay();
             setupMobileMenu();
+            setupHomeButton();
 
             // Mobile optimization - Hide address bar
             window.addEventListener('load', function() {
@@ -1294,6 +1239,19 @@
                 }, 0);
             });
         });
+
+        function setupHomeButton() {
+            const homeButton = document.getElementById('homeButton');
+            
+            homeButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Scroll to top smoothly
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
 
         function setupMobileMenu() {
             const menuBtn = document.querySelector('.mobile-menu-btn');
