@@ -16,7 +16,7 @@
         :root {
             --thai-red: #C41E3A;
             --thai-orange: #FF6B35;
-            --thai-gold: #B57EDC;
+            --thai-gold: #C8A2C8;
             --thai-green: #2E8B57;
             --dark-blue: #2C3E50;
             --light-bg: #F9F9F9;
@@ -100,7 +100,7 @@
         
         /* Header */
         header {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('foto-sfondo.JPG');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('foto-front.JPG');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -336,6 +336,40 @@
             font-weight: bold;
         }
 
+        /* Controlli quantità */
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .quantity-btn {
+            background: var(--thai-red);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .quantity-display {
+            min-width: 40px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .add-to-cart-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
         /* Stili per la modale ordine */
         .modal {
             display: none;
@@ -359,18 +393,6 @@
             max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .order-btn {
-            transition: all 0.3s;
-            margin-top: 10px;
-            padding: 8px 16px;
-            font-size: 0.9rem;
-        }
-
-        .order-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
         }
 
         .selected-dishes {
@@ -404,6 +426,29 @@
             font-size: 0.8rem;
         }
 
+        .dish-quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dish-quantity-btn {
+            background: var(--thai-orange);
+            color: white;
+            border: none;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .dish-quantity {
+            min-width: 30px;
+            text-align: center;
+            font-weight: bold;
+        }
+
         .form-group {
             margin-bottom: 20px;
         }
@@ -424,10 +469,50 @@
             font-family: inherit;
         }
 
+        /* Carrello fisso */
+        .cart-fixed {
+            position: fixed;
+            bottom: 90px;
+            left: 20px;
+            background: var(--thai-green);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 999;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+        .cart-fixed.active {
+            display: flex;
+        }
+
+        .cart-count {
+            background: var(--thai-red);
+            color: white;
+            border-radius: 50%;
+            width: 25px;
+            height: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         @media (max-width: 768px) {
             .modal-content {
                 padding: 20px;
                 margin: 20px;
+            }
+
+            .cart-fixed {
+                left: 10px;
+                bottom: 80px;
+                padding: 12px 16px;
             }
         }
         
@@ -565,88 +650,6 @@
             margin-bottom: 5px;
         }
         
-        /* Galleria */
-        #gallery {
-            background-color: var(--light-bg);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .gallery-item {
-            border-radius: 10px;
-            overflow: hidden;
-            height: 300px;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        /* Contatti */
-        #contact {
-            background-color: var(--white);
-        }
-        
-        .contact-container {
-            display: flex;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .contact-details {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .contact-item {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: flex-start;
-        }
-        
-        .contact-item i {
-            margin-right: 15px;
-            color: var(--thai-red);
-            font-size: 1.2rem;
-            width: 20px;
-            text-align: center;
-        }
-        
-        .map {
-            flex: 1;
-            min-width: 300px;
-        }
-        
-        .map iframe {
-            width: 100%;
-            height: 400px;
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
         /* Footer */
         footer {
             background-color: var(--dark-blue);
@@ -782,10 +785,6 @@
                 font-size: 2rem;
             }
 
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-
             .menu-items-grid {
                 grid-template-columns: 1fr;
             }
@@ -831,13 +830,6 @@
                 font-size: 1.2rem;
             }
         }
-
-        /* Hide address bar on mobile */
-        @media (max-height: 700px) and (orientation: landscape) {
-            header {
-                min-height: 120vh;
-            }
-        }
     </style>
 </head>
 <body>
@@ -845,6 +837,13 @@
     <a href="https://wa.me/393384461593?text=Ciao%20Rojana,%20vorrei%20ordinare%20asporto%20o%20consegna%20a%20domicilio!" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
+
+    <!-- Carrello Fisso -->
+    <div class="cart-fixed" id="fixedCart">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Carrello</span>
+        <div class="cart-count" id="cartCount">0</div>
+    </div>
 
     <!-- Home Button - Always visible -->
     <a href="#" class="home-btn" id="homeButton">
@@ -922,7 +921,12 @@
                                 <span class="menu-item-price">€9</span>
                             </div>
                             <p id="thai-antipasto-desc">Polpette di pesce speziate con salsa di cetrioli</p>
-                            <button class="btn btn-thai btn-small order-btn" data-item="Tod Mun Pla" data-price="9">Aggiungi all'Ordine</button>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus" data-item="Tod Mun Pla">-</button>
+                                <span class="quantity-display" data-item="Tod Mun Pla">0</span>
+                                <button class="quantity-btn plus" data-item="Tod Mun Pla">+</button>
+                                <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Tod Mun Pla" data-price="9">Aggiungi</button>
+                            </div>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -930,7 +934,12 @@
                                 <span class="menu-item-price">€14</span>
                             </div>
                             <p id="thai-principale-desc">Spaghetti di riso saltati con gamberi, tofu e germogli di soia</p>
-                            <button class="btn btn-thai btn-small order-btn" data-item="Pad Thai" data-price="14">Aggiungi all'Ordine</button>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus" data-item="Pad Thai">-</button>
+                                <span class="quantity-display" data-item="Pad Thai">0</span>
+                                <button class="quantity-btn plus" data-item="Pad Thai">+</button>
+                                <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Pad Thai" data-price="14">Aggiungi</button>
+                            </div>
                         </div>
                         <div class="menu-item">
                             <div class="menu-item-title">
@@ -938,15 +947,12 @@
                                 <span class="menu-item-price">€12</span>
                             </div>
                             <p>Riso fritto thailandese con uovo, cipolla e piselli</p>
-                            <button class="btn btn-thai btn-small order-btn" data-item="Khao Pad" data-price="12">Aggiungi all'Ordine</button>
-                        </div>
-                        <div id="order-display-daily" class="selected-dishes" style="display: none;">
-                            <!-- Gli ordini appariranno qui -->
-                        </div>
-                        <div class="menu-item">
-                            <button class="btn btn-whatsapp complete-order-btn" id="completeOrderDaily">
-                                Completa Ordine WhatsApp
-                            </button>
+                            <div class="quantity-controls">
+                                <button class="quantity-btn minus" data-item="Khao Pad">-</button>
+                                <span class="quantity-display" data-item="Khao Pad">0</span>
+                                <button class="quantity-btn plus" data-item="Khao Pad">+</button>
+                                <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Khao Pad" data-price="12">Aggiungi</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -974,7 +980,12 @@
                             </div>
                         </div>
                         <p class="menu-item-price">€12 (Porzione per 1 persona)</p>
-                        <button class="btn btn-thai btn-small order-btn" data-item="Khao Pad Moo - Riso con Maiale" data-price="12">Aggiungi all'Ordine</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" data-item="Khao Pad Moo - Riso con Maiale">-</button>
+                            <span class="quantity-display" data-item="Khao Pad Moo - Riso con Maiale">0</span>
+                            <button class="quantity-btn plus" data-item="Khao Pad Moo - Riso con Maiale">+</button>
+                            <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Khao Pad Moo - Riso con Maiale" data-price="12">Aggiungi</button>
+                        </div>
                     </div>
                 </div>
                 
@@ -992,12 +1003,17 @@
                             </div>
                         </div>
                         <p class="menu-item-price">€8 (4 pezzi)</p>
-                        <button class="btn btn-thai btn-small order-btn" data-item="Po Pia Tod - Involtini Primavera" data-price="8">Aggiungi all'Ordine</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" data-item="Po Pia Tod - Involtini Primavera">-</button>
+                            <span class="quantity-display" data-item="Po Pia Tod - Involtini Primavera">0</span>
+                            <button class="quantity-btn plus" data-item="Po Pia Tod - Involtini Primavera">+</button>
+                            <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Po Pia Tod - Involtini Primavera" data-price="8">Aggiungi</button>
+                        </div>
                     </div>
                 </div>
 
                 <div class="menu-item-card">
-                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kiao">
+                    <img src="foto-kiao.JPG" alt="Kiao">
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Kiao - Ravioli Cinesi</h3>
                         <p>Ravioli thailandesi ripieni di carne di maiale, gamberi, funghi shitake e erbe aromatiche. Disponibili al vapore o alla piastra.</p>
@@ -1009,12 +1025,17 @@
                             </div>
                         </div>
                         <p class="menu-item-price">€9 (6 pezzi)</p>
-                        <button class="btn btn-thai btn-small order-btn" data-item="Kiao - Ravioli Cinesi" data-price="9">Aggiungi all'Ordine</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" data-item="Kiao - Ravioli Cinesi">-</button>
+                            <span class="quantity-display" data-item="Kiao - Ravioli Cinesi">0</span>
+                            <button class="quantity-btn plus" data-item="Kiao - Ravioli Cinesi">+</button>
+                            <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Kiao - Ravioli Cinesi" data-price="9">Aggiungi</button>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="menu-item-card">
-                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Khao Pad Goong">
+                    <img src="foto-khao-pad-goong.JPG" alt="Khao Pad Goong">
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Khao Pad Goong - Riso con Gamberetti</h3>
                         <p>Riso fritto con gamberetti freschi, uova, piselli, carote e aromatizzato con salsa di pesce thailandese.</p>
@@ -1028,20 +1049,14 @@
                             </div>
                         </div>
                         <p class="menu-item-price">€13 (Porzione per 1 persona)</p>
-                        <button class="btn btn-thai btn-small order-btn" data-item="Khao Pad Goong - Riso con Gamberetti" data-price="13">Aggiungi all'Ordine</button>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn minus" data-item="Khao Pad Goong - Riso con Gamberetti">-</button>
+                            <span class="quantity-display" data-item="Khao Pad Goong - Riso con Gamberetti">0</span>
+                            <button class="quantity-btn plus" data-item="Khao Pad Goong - Riso con Gamberetti">+</button>
+                            <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Khao Pad Goong - Riso con Gamberetti" data-price="13">Aggiungi</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Carrello ordini menu completo -->
-            <div id="order-display-complete" class="selected-dishes" style="display: none; margin-top: 40px;">
-                <!-- Gli ordini appariranno qui -->
-            </div>
-            
-            <div style="text-align: center; margin-top: 30px;">
-                <button class="btn btn-whatsapp complete-order-btn" id="completeOrderComplete" style="display: none;">
-                    Completa Ordine WhatsApp
-                </button>
             </div>
         </div>
     </section>
@@ -1053,7 +1068,7 @@
             <div class="courses-container">
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corso Involtini Primavera">
+                        <img src="foto-corso-involtini.JPG" alt="Corso Involtini Primavera">
                     </div>
                     <div class="course-content">
                         <h3 class="course-title">Po Pia Tod - Involtini Primavera</h3>
@@ -1072,7 +1087,7 @@
                 
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corso Ravioli Cinesi">
+                        <img src="foto-corso-ravioli.JPG" alt="Corso Ravioli Cinesi">
                     </div>
                     <div class="course-content">
                         <h3 class="course-title">Kiao - Ravioli Cinesi</h3>
@@ -1091,7 +1106,7 @@
 
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corso Riso Thailandese">
+                        <img src="foto-corso-riso.JPG" alt="Corso Riso Thailandese">
                     </div>
                     <div class="course-content">
                         <h3 class="course-title">Khao Pad - Riso Thailandese</h3>
@@ -1170,15 +1185,21 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
-            <p>&copy; 2025 Rojana Home Restaurant - Cucina Thailandese Autentica. Tutti i diritti riservati.</p>
+            <p>&copy; 2023 Rojana Home Restaurant - Cucina Thailandese Autentica. Tutti i diritti riservati.</p>
             <p>Contrada Spaccazza - Noto (SR) | Tel: 338 446 1593</p>
         </div>
     </footer>
 
-    <!-- Modale per allergie e informazioni ordine -->
+    <!-- Modale per ordine -->
     <div id="orderModal" class="modal">
         <div class="modal-content">
-            <h3 style="margin-bottom: 20px; color: var(--thai-red);">Completa il Tuo Ordine</h3>
+            <h3 style="margin-bottom: 20px; color: var(--thai-red);">Il Tuo Ordine</h3>
+            <div class="selected-dishes" id="modalOrderDisplay">
+                <!-- Gli ordini appariranno qui -->
+            </div>
+            <div id="orderTotal" style="text-align: right; margin: 20px 0; font-size: 1.2rem; font-weight: bold;">
+                TOTALE: €0.00
+            </div>
             <form id="orderForm">
                 <div class="form-group">
                     <label for="customerName">Nome e Cognome *</label>
@@ -1208,9 +1229,6 @@
                     <label for="specialRequests">Note Speciali</label>
                     <textarea id="specialRequests" rows="3" placeholder="Altre richieste speciali..."></textarea>
                 </div>
-                <div class="selected-dishes" id="modalOrderDisplay">
-                    <!-- L'ordine apparirà qui -->
-                </div>
                 <div class="form-buttons" style="display: flex; gap: 10px; margin-top: 20px;">
                     <button type="button" id="cancelOrder" class="btn" style="background: #666;">Annulla</button>
                     <button type="submit" class="btn btn-whatsapp">Invia Ordine WhatsApp</button>
@@ -1220,32 +1238,173 @@
     </div>
 
     <script>
-        // Array per memorizzare gli ordini
-        let selectedDishesDaily = [];
-        let selectedDishesComplete = [];
+        // Sistema carrello
+        let cart = {};
+        let cartTotal = 0;
 
         // Gestione degli ordini
         document.addEventListener('DOMContentLoaded', function() {
-            setupOrderSystem();
+            setupCartSystem();
             updateDailyMenu();
             highlightCurrentDay();
             setupMobileMenu();
             setupHomeButton();
-
-            // Mobile optimization - Hide address bar
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    window.scrollTo(0, 1);
-                }, 0);
-            });
         });
+
+        function setupCartSystem() {
+            // Setup pulsanti quantità
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    updateQuantity(item, 1);
+                });
+            });
+
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    updateQuantity(item, -1);
+                });
+            });
+
+            // Setup pulsanti aggiungi al carrello
+            document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    const quantity = parseInt(document.querySelector(`.quantity-display[data-item="${item}"]`).textContent);
+                    
+                    if (quantity > 0) {
+                        addToCart(item, price, quantity);
+                        // Reset quantità
+                        document.querySelector(`.quantity-display[data-item="${item}"]`).textContent = '0';
+                    }
+                });
+            });
+
+            // Setup carrello fisso
+            document.getElementById('fixedCart').addEventListener('click', openOrderModal);
+        }
+
+        function updateQuantity(item, change) {
+            const display = document.querySelector(`.quantity-display[data-item="${item}"]`);
+            let quantity = parseInt(display.textContent);
+            quantity = Math.max(0, quantity + change);
+            display.textContent = quantity;
+        }
+
+        function addToCart(item, price, quantity) {
+            if (cart[item]) {
+                cart[item].quantity += quantity;
+            } else {
+                cart[item] = {
+                    price: price,
+                    quantity: quantity
+                };
+            }
+            
+            updateCartDisplay();
+        }
+
+        function updateCartDisplay() {
+            // Aggiorna contatore carrello
+            let totalItems = 0;
+            cartTotal = 0;
+            
+            for (const item in cart) {
+                totalItems += cart[item].quantity;
+                cartTotal += cart[item].price * cart[item].quantity;
+            }
+            
+            document.getElementById('cartCount').textContent = totalItems;
+            
+            // Mostra/nascondi carrello fisso
+            const fixedCart = document.getElementById('fixedCart');
+            if (totalItems > 0) {
+                fixedCart.classList.add('active');
+            } else {
+                fixedCart.classList.remove('active');
+            }
+        }
+
+        function openOrderModal() {
+            if (Object.keys(cart).length === 0) {
+                alert('Il carrello è vuoto! Aggiungi qualche piatto prima di ordinare.');
+                return;
+            }
+            
+            const modal = document.getElementById('orderModal');
+            const modalOrderDisplay = document.getElementById('modalOrderDisplay');
+            
+            // Mostra l'ordine nella modale
+            modalOrderDisplay.innerHTML = '<h4>Il Tuo Ordine:</h4>';
+            
+            for (const item in cart) {
+                const dish = cart[item];
+                const dishElement = document.createElement('div');
+                dishElement.className = 'selected-dish';
+                dishElement.innerHTML = `
+                    <div>
+                        <div style="font-weight: bold;">${item}</div>
+                        <div>€${dish.price.toFixed(2)} × ${dish.quantity} = €${(dish.price * dish.quantity).toFixed(2)}</div>
+                    </div>
+                    <div class="dish-quantity-controls">
+                        <button class="dish-quantity-btn minus" data-item="${item}">-</button>
+                        <span class="dish-quantity">${dish.quantity}</span>
+                        <button class="dish-quantity-btn plus" data-item="${item}">+</button>
+                        <button class="remove-dish" data-item="${item}">×</button>
+                    </div>
+                `;
+                modalOrderDisplay.appendChild(dishElement);
+            }
+            
+            // Aggiorna totale
+            document.getElementById('orderTotal').textContent = `TOTALE: €${cartTotal.toFixed(2)}`;
+            
+            // Setup controlli quantità nella modale
+            modalOrderDisplay.querySelectorAll('.dish-quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    cart[item].quantity++;
+                    updateCartDisplay();
+                    openOrderModal(); // Riapri modale per aggiornare
+                });
+            });
+            
+            modalOrderDisplay.querySelectorAll('.dish-quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    if (cart[item].quantity > 1) {
+                        cart[item].quantity--;
+                    } else {
+                        delete cart[item];
+                    }
+                    updateCartDisplay();
+                    openOrderModal(); // Riapri modale per aggiornare
+                });
+            });
+            
+            modalOrderDisplay.querySelectorAll('.remove-dish').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const item = this.getAttribute('data-item');
+                    delete cart[item];
+                    updateCartDisplay();
+                    openOrderModal(); // Riapri modale per aggiornare
+                });
+            });
+            
+            modal.style.display = 'flex';
+            
+            // Reset form
+            document.getElementById('orderForm').reset();
+            document.getElementById('addressGroup').style.display = 'none';
+        }
 
         function setupHomeButton() {
             const homeButton = document.getElementById('homeButton');
             
             homeButton.addEventListener('click', function(e) {
                 e.preventDefault();
-                // Scroll to top smoothly
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
@@ -1259,7 +1418,6 @@
             
             menuBtn.addEventListener('click', function() {
                 navList.classList.toggle('active');
-                // Cambia icona
                 const icon = this.querySelector('i');
                 if (navList.classList.contains('active')) {
                     icon.classList.remove('fa-bars');
@@ -1271,110 +1429,18 @@
             });
         }
 
-        function setupOrderSystem() {
-            // Setup per menu del giorno
-            setupSectionOrders('#daily-menu .order-btn', selectedDishesDaily, '#order-display-daily', '#completeOrderDaily');
-            
-            // Setup per menu completo
-            setupSectionOrders('#menu .order-btn', selectedDishesComplete, '#order-display-complete', '#completeOrderComplete');
-
-            // Setup modale
-            setupOrderModal();
-        }
-
-        function setupSectionOrders(buttonSelector, dishesArray, displaySelector, completeButtonSelector) {
-            const orderButtons = document.querySelectorAll(buttonSelector);
-            const completeOrderBtn = document.querySelector(completeButtonSelector);
-            const orderDisplay = document.querySelector(displaySelector);
-
-            orderButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const item = this.getAttribute('data-item');
-                    const price = this.getAttribute('data-price');
-                    
-                    // Aggiungi il piatto all'array degli ordini
-                    dishesArray.push({
-                        name: item,
-                        price: parseFloat(price)
-                    });
-                    
-                    // Aggiorna la visualizzazione
-                    updateOrderDisplay(dishesArray, orderDisplay, completeOrderBtn);
-                    
-                    // Feedback visivo
-                    this.textContent = '✓ Aggiunto';
-                    this.style.background = 'var(--thai-green)';
-                    setTimeout(() => {
-                        this.textContent = 'Aggiungi all\'Ordine';
-                        this.style.background = '';
-                    }, 2000);
-                });
-            });
-            
-            // Gestione completamento ordine
-            completeOrderBtn.addEventListener('click', function() {
-                if (dishesArray.length === 0) {
-                    alert('Aggiungi almeno un piatto al tuo ordine!');
-                    return;
-                }
-                openOrderModal(dishesArray);
-            });
-        }
-
-        function updateOrderDisplay(dishesArray, orderDisplay, completeOrderBtn) {
-            if (dishesArray.length === 0) {
-                orderDisplay.style.display = 'none';
-                completeOrderBtn.style.display = 'none';
-                return;
-            }
-            
-            orderDisplay.style.display = 'block';
-            completeOrderBtn.style.display = 'block';
-            
-            orderDisplay.innerHTML = '<h4>Il Tuo Ordine:</h4>';
-            
-            let total = 0;
-            dishesArray.forEach((dish, index) => {
-                const dishElement = document.createElement('div');
-                dishElement.className = 'selected-dish';
-                dishElement.innerHTML = `
-                    <span>${dish.name} - €${dish.price.toFixed(2)}</span>
-                    <button class="remove-dish" data-index="${index}">×</button>
-                `;
-                orderDisplay.appendChild(dishElement);
-                total += dish.price;
-            });
-            
-            // Aggiungi totale
-            const totalElement = document.createElement('div');
-            totalElement.className = 'selected-dish';
-            totalElement.style.fontWeight = 'bold';
-            totalElement.innerHTML = `<span>TOTALE: €${total.toFixed(2)}</span>`;
-            orderDisplay.appendChild(totalElement);
-            
-            // Aggiungi event listener per rimuovere piatti
-            orderDisplay.querySelectorAll('.remove-dish').forEach(button => {
-                button.addEventListener('click', function() {
-                    const index = parseInt(this.getAttribute('data-index'));
-                    dishesArray.splice(index, 1);
-                    updateOrderDisplay(dishesArray, orderDisplay, completeOrderBtn);
-                });
-            });
-        }
-
-        function setupOrderModal() {
+        // Setup modale ordine
+        document.addEventListener('DOMContentLoaded', function() {
             const modal = document.getElementById('orderModal');
             const orderForm = document.getElementById('orderForm');
             const cancelBtn = document.getElementById('cancelOrder');
             const orderType = document.getElementById('orderType');
             const addressGroup = document.getElementById('addressGroup');
             
-            // Mostra/nascondi indirizzo consegna
             orderType.addEventListener('change', function() {
                 addressGroup.style.display = this.value === 'consegna' ? 'block' : 'none';
             });
             
-            // Chiudi modale
             cancelBtn.addEventListener('click', function() {
                 modal.style.display = 'none';
             });
@@ -1385,43 +1451,11 @@
                 }
             });
             
-            // Gestione invio ordine
             orderForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 submitOrder();
             });
-        }
-
-        let currentOrder = [];
-
-        function openOrderModal(dishesArray) {
-            currentOrder = [...dishesArray];
-            const modal = document.getElementById('orderModal');
-            const modalOrderDisplay = document.getElementById('modalOrderDisplay');
-            
-            // Mostra l'ordine nella modale
-            modalOrderDisplay.innerHTML = '<h4>Il Tuo Ordine:</h4>';
-            let total = 0;
-            dishesArray.forEach(dish => {
-                const dishElement = document.createElement('div');
-                dishElement.className = 'selected-dish';
-                dishElement.innerHTML = `<span>${dish.name} - €${dish.price.toFixed(2)}</span>`;
-                modalOrderDisplay.appendChild(dishElement);
-                total += dish.price;
-            });
-            
-            const totalElement = document.createElement('div');
-            totalElement.className = 'selected-dish';
-            totalElement.style.fontWeight = 'bold';
-            totalElement.innerHTML = `<span>TOTALE: €${total.toFixed(2)}</span>`;
-            modalOrderDisplay.appendChild(totalElement);
-            
-            modal.style.display = 'flex';
-            
-            // Reset form
-            document.getElementById('orderForm').reset();
-            document.getElementById('addressGroup').style.display = 'none';
-        }
+        });
 
         function submitOrder() {
             const name = document.getElementById('customerName').value;
@@ -1431,7 +1465,6 @@
             const allergies = document.getElementById('allergies').value;
             const specialRequests = document.getElementById('specialRequests').value;
             
-            // Validazione
             if (!validateOrderForm()) {
                 return;
             }
@@ -1448,13 +1481,12 @@
             
             whatsappMessage += `%0A*IL MIO ORDINE:*%0A`;
             
-            let total = 0;
-            currentOrder.forEach(dish => {
-                whatsappMessage += `• ${dish.name} - €${dish.price.toFixed(2)}%0A`;
-                total += dish.price;
-            });
+            for (const item in cart) {
+                const dish = cart[item];
+                whatsappMessage += `• ${item} - €${dish.price.toFixed(2)} × ${dish.quantity} = €${(dish.price * dish.quantity).toFixed(2)}%0A`;
+            }
             
-            whatsappMessage += `%0A*TOTALE: €${total.toFixed(2)}*%0A%0A`;
+            whatsappMessage += `%0A*TOTALE: €${cartTotal.toFixed(2)}*%0A%0A`;
             
             if (allergies) {
                 whatsappMessage += `*ALLERGIE/INTOLLERANZE:* ${allergies}%0A%0A`;
@@ -1466,12 +1498,12 @@
             
             whatsappMessage += `Grazie! 🍜`;
             
-            // Apri WhatsApp
             window.open(`https://wa.me/393384461593?text=${whatsappMessage}`, '_blank');
             
-            // Chiudi modale e reset ordini
+            // Reset
             document.getElementById('orderModal').style.display = 'none';
-            resetAllOrders();
+            cart = {};
+            updateCartDisplay();
         }
 
         function validateOrderForm() {
@@ -1490,7 +1522,6 @@
                 return false;
             }
             
-            // Validazione telefono
             const phoneRegex = /^[0-9]{10}$/;
             if (!phoneRegex.test(phone.replace(/\s/g, ''))) {
                 alert('Inserisci un numero di telefono valido (10 cifre)');
@@ -1500,22 +1531,6 @@
             return true;
         }
 
-        function resetAllOrders() {
-            selectedDishesDaily = [];
-            selectedDishesComplete = [];
-            currentOrder = [];
-            
-            document.querySelectorAll('.selected-dishes').forEach(display => {
-                display.style.display = 'none';
-                display.innerHTML = '';
-            });
-            
-            document.querySelectorAll('.complete-order-btn').forEach(btn => {
-                btn.style.display = 'none';
-            });
-        }
-
-        // Funzione per evidenziare il giorno corrente
         function highlightCurrentDay() {
             const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
             const today = new Date().getDay();
@@ -1526,7 +1541,6 @@
             }
         }
 
-        // Funzione per cambiare il menu del giorno automaticamente
         function updateDailyMenu() {
             const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
             const today = new Date();
@@ -1547,7 +1561,7 @@
             document.getElementById('thai-principale-title').textContent = `Piatto Principale: ${thaiMenu.principale}`;
         }
 
-        // Smooth scrolling per i link di navigazione
+        // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
