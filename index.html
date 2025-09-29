@@ -28,14 +28,7 @@
             line-height: 1.6;
             color: #333;
             background-color: var(--light-bg);
-            height: 100vh;
-            height: 100dvh;
             overflow-x: hidden;
-        }
-        
-        html {
-            height: 100%;
-            overflow: hidden;
         }
         
         .container {
@@ -107,7 +100,7 @@
         
         /* Header */
         header {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('foto-sfondo.JPG');
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -186,6 +179,18 @@
             font-size: 1.5rem;
             text-decoration: none;
             padding: 10px;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--thai-red);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
         
         nav ul {
@@ -210,6 +215,15 @@
         
         nav a:hover {
             background-color: rgba(255,255,255,0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         /* Sezioni */
@@ -382,6 +396,26 @@
             height: 25px;
             cursor: pointer;
             font-size: 0.8rem;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
         }
 
         @media (max-width: 768px) {
@@ -698,7 +732,7 @@
         
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
+            bottom: 80px;
             right: 30px;
             background: #25D366;
             color: white;
@@ -777,17 +811,27 @@
                 padding: 10px;
             }
             
-            .home-btn {
-                margin-bottom: 10px;
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 15px;
             }
             
             nav ul {
-                flex-wrap: wrap;
+                flex-direction: column;
+                width: 100%;
+                display: none;
+            }
+            
+            nav ul.active {
+                display: flex;
             }
             
             nav a {
                 padding: 10px 15px;
                 font-size: 0.9rem;
+                text-align: center;
             }
             
             .menu-tabs {
@@ -822,6 +866,11 @@
             .menu-item-card {
                 margin-bottom: 20px;
             }
+
+            .home-btn {
+                bottom: 20px;
+                right: 20px;
+            }
         }
 
         @media (max-width: 480px) {
@@ -853,6 +902,11 @@
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- Home Button - Always visible -->
+    <a href="#" class="home-btn">
+        <i class="fas fa-home"></i>
+    </a>
+
     <!-- Header -->
     <header>
         <div class="container">
@@ -875,9 +929,9 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="home-btn">
-                <i class="fas fa-home"></i>
-            </a>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
             <ul>
                 <li><a href="#about">Chi Siamo</a></li>
                 <li><a href="#daily-menu">Menu del Giorno</a></li>
@@ -901,7 +955,7 @@
                     <p>Vi aspettiamo per farvi provare i veri sapori della Thailandia!</p>
                 </div>
                 <div class="about-image">
-                    <img src="foto-chisiamo.JPG" alt="Rojana - Cucina Thailandese">
+                    <img src="https://images.unsplash.com/photo-1559305289-0f8e5db8c373?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rojana - Cucina Thailandese">
                 </div>
             </div>
         </div>
@@ -962,7 +1016,7 @@
             <h2 class="section-title">Menu Completo</h2>
             <div class="menu-items-grid">
                 <div class="menu-item-card">
-                    <img src="placeholder-riso-maiale.jpg" alt="Khao Pad Moo">
+                    <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Khao Pad Moo">
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Khao Pad Moo - Riso con Maiale</h3>
                         <p>Riso jasmine saltato con maiale tritato, uova, cipolle, piselli, carote e salsa di soia. Servito con lime e cetrioli.</p>
@@ -981,7 +1035,7 @@
                 </div>
                 
                 <div class="menu-item-card">
-                    <img src="placeholder-involtini.jpg" alt="Po Pia Tod">
+                    <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Po Pia Tod">
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Po Pia Tod - Involtini Primavera</h3>
                         <p>Involtini croccanti ripieni di verdure fresche, germogli di soia, glass noodles e carne di maiale. Serviti con salsa agrodolce.</p>
@@ -999,7 +1053,7 @@
                 </div>
 
                 <div class="menu-item-card">
-                    <img src="placeholder-ravioli.jpg" alt="Kiao">
+                    <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kiao">
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Kiao - Ravioli Cinesi</h3>
                         <p>Ravioli thailandesi ripieni di carne di maiale, gamberi, funghi shitake e erbe aromatiche. Disponibili al vapore o alla piastra.</p>
@@ -1016,7 +1070,7 @@
                 </div>
                 
                 <div class="menu-item-card">
-                    <img src="placeholder-riso-gamberi.jpg" alt="Khao Pad Goong">
+                    <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Khao Pad Goong">
                     <div class="menu-item-content">
                         <h3 class="menu-item-title">Khao Pad Goong - Riso con Gamberetti</h3>
                         <p>Riso fritto con gamberetti freschi, uova, piselli, carote e aromatizzato con salsa di pesce thailandese.</p>
@@ -1055,7 +1109,7 @@
             <div class="courses-container">
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="placeholder-involtini-corso.jpg" alt="Corso Involtini Primavera">
+                        <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corso Involtini Primavera">
                     </div>
                     <div class="course-content">
                         <h3 class="course-title">Po Pia Tod - Involtini Primavera</h3>
@@ -1074,7 +1128,7 @@
                 
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="placeholder-ravioli-corso.jpg" alt="Corso Ravioli Cinesi">
+                        <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corso Ravioli Cinesi">
                     </div>
                     <div class="course-content">
                         <h3 class="course-title">Kiao - Ravioli Cinesi</h3>
@@ -1093,7 +1147,7 @@
 
                 <div class="course-card">
                     <div class="course-image">
-                        <img src="placeholder-riso-corso.jpg" alt="Corso Riso Thailandese">
+                        <img src="https://images.unsplash.com/photo-1552611052-33e04de081de?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Corso Riso Thailandese">
                     </div>
                     <div class="course-content">
                         <h3 class="course-title">Khao Pad - Riso Thailandese</h3>
@@ -1172,7 +1226,7 @@
                 <a href="#"><i class="fab fa-instagram"></i></a>
                 <a href="#"><i class="fab fa-tripadvisor"></i></a>
             </div>
-            <p>&copy; 2023 Rojana Home Restaurant - Cucina Thailandese Autentica. Tutti i diritti riservati.</p>
+            <p>&copy; 2025 Rojana Home Restaurant - Cucina Thailandese Autentica. Tutti i diritti riservati.</p>
             <p>Contrada Spaccazza - Noto (SR) | Tel: 338 446 1593</p>
         </div>
     </footer>
@@ -1231,6 +1285,7 @@
             setupOrderSystem();
             updateDailyMenu();
             highlightCurrentDay();
+            setupMobileMenu();
 
             // Mobile optimization - Hide address bar
             window.addEventListener('load', function() {
@@ -1239,6 +1294,24 @@
                 }, 0);
             });
         });
+
+        function setupMobileMenu() {
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navList = document.querySelector('nav ul');
+            
+            menuBtn.addEventListener('click', function() {
+                navList.classList.toggle('active');
+                // Cambia icona
+                const icon = this.querySelector('i');
+                if (navList.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        }
 
         function setupOrderSystem() {
             // Setup per menu del giorno
