@@ -152,10 +152,9 @@
             z-index: 1;
         }
         
-        .thai-decoration {
-            text-align: center;
-            font-size: 5rem;
-            opacity: 0.8;
+        .thai-flag {
+            font-size: 8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
         
         /* Navigation */
@@ -596,12 +595,13 @@
         
         .contact-container {
             display: flex;
-            flex-direction: column;
             gap: 40px;
+            flex-wrap: wrap;
         }
         
         .contact-info {
-            width: 100%;
+            flex: 1;
+            min-width: 300px;
         }
         
         .contact-details {
@@ -626,7 +626,8 @@
         }
         
         .map {
-            width: 100%;
+            flex: 1;
+            min-width: 300px;
         }
         
         .map iframe {
@@ -849,8 +850,8 @@
                 </div>
             </div>
             <div class="hero-decoration">
-                <div class="thai-decoration">
-                    <i class="fas fa-dharmachakra"></i>
+                <div class="thai-flag">
+                    🇹🇭
                 </div>
             </div>
         </div>
@@ -871,22 +872,22 @@
         </div>
     </nav>
 
-    <!-- Chi Sono -->
+    <!-- Chi Siamo -->
     <section id="about">
         <div class="container">
-            <h2 class="section-title">La Mia Storia</h2>
+            <h2 class="section-title">La Nostra Storia</h2>
             <div class="about-content">
                 <div class="about-text">
-    <p>Benvenuti da Rojana! Sono thailandese di nascita e italiana per amore, qui da oltre 10 anni. La mia cucina nasce da ricette di famiglia tramandate da generazioni.</p>
-    
-    <p>Ho portato con me in Sicilia i sapori autentici della Thailandia. Ogni piatto vi trasporterà nelle strade di Bangkok o nelle spiagge di Phuket.</p>
-    
-    <p>A Noto, unisco la bellezza della Sicilia con i sapori thailandesi attraverso asporto e consegna a domicilio.</p>
-    
-    <p>Organizzo anche corsi di cucina per chi vuole imparare i segreti della cucina thailandese tradizionale.</p>
-    
-    <p>Vi aspetto per farvi provare i veri sapori della Thailandia, preparati con amore!</p>
-</div>
+                    <p>Benvenuti da Rojana! Sono thailandese di nascita e italiana per amore, qui da oltre 10 anni. La mia cucina nasce da ricette di famiglia tramandate da generazioni.</p>
+                    
+                    <p>Ho portato con me in Sicilia i sapori autentici della Thailandia. Ogni piatto vi trasporterà nelle strade di Bangkok o nelle spiagge di Phuket.</p>
+                    
+                    <p>A Noto, unisco la bellezza della Sicilia con i sapori thailandesi attraverso asporto e consegna a domicilio.</p>
+                    
+                    <p>Organizzo anche corsi di cucina per chi vuole imparare i segreti della cucina thailandese tradizionale.</p>
+                    
+                    <p>Vi aspetto per farvi provare i veri sapori della Thailandia, preparati con amore!</p>
+                </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1621277223263-4cb2e300c6b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Cattedrale di Noto">
                 </div>
@@ -1151,6 +1152,10 @@
                         <option value="consegna">Consegna a Domicilio</option>
                     </select>
                 </div>
+                <div class="form-group" id="pickupTimeGroup" style="display: none;">
+                    <label for="pickupTime">A che ora vieni a ritirare? *</label>
+                    <input type="text" id="pickupTime" placeholder="Es: 19:30" required>
+                </div>
                 <div class="form-group" id="addressGroup" style="display: none;">
                     <label for="deliveryAddress">Indirizzo di Consegna *</label>
                     <textarea id="deliveryAddress" rows="3" placeholder="Via, Numero, Città"></textarea>
@@ -1330,6 +1335,7 @@
             // Reset form
             document.getElementById('orderForm').reset();
             document.getElementById('addressGroup').style.display = 'none';
+            document.getElementById('pickupTimeGroup').style.display = 'none';
         }
 
         function setupHomeButton() {
@@ -1368,9 +1374,19 @@
             const cancelBtn = document.getElementById('cancelOrder');
             const orderType = document.getElementById('orderType');
             const addressGroup = document.getElementById('addressGroup');
+            const pickupTimeGroup = document.getElementById('pickupTimeGroup');
             
             orderType.addEventListener('change', function() {
-                addressGroup.style.display = this.value === 'consegna' ? 'block' : 'none';
+                if (this.value === 'consegna') {
+                    addressGroup.style.display = 'block';
+                    pickupTimeGroup.style.display = 'none';
+                } else if (this.value === 'asporto') {
+                    addressGroup.style.display = 'none';
+                    pickupTimeGroup.style.display = 'block';
+                } else {
+                    addressGroup.style.display = 'none';
+                    pickupTimeGroup.style.display = 'none';
+                }
             });
             
             cancelBtn.addEventListener('click', function() {
@@ -1394,6 +1410,7 @@
             const phone = document.getElementById('customerPhone').value;
             const orderType = document.getElementById('orderType').value;
             const address = document.getElementById('deliveryAddress').value;
+            const pickupTime = document.getElementById('pickupTime').value;
             const allergies = document.getElementById('allergies').value;
             const specialRequests = document.getElementById('specialRequests').value;
             
@@ -1409,6 +1426,10 @@
             
             if (orderType === 'consegna' && address) {
                 whatsappMessage += `*Indirizzo consegna:* ${address}%0A`;
+            }
+            
+            if (orderType === 'asporto' && pickupTime) {
+                whatsappMessage += `*Orario ritiro:* ${pickupTime}%0A`;
             }
             
             whatsappMessage += `%0A*IL MIO ORDINE:*%0A`;
@@ -1443,6 +1464,7 @@
             const phone = document.getElementById('customerPhone').value;
             const orderType = document.getElementById('orderType').value;
             const address = document.getElementById('deliveryAddress').value;
+            const pickupTime = document.getElementById('pickupTime').value;
             
             if (!name || !phone || !orderType) {
                 alert('Per favore, compila tutti i campi obbligatori');
@@ -1451,6 +1473,11 @@
             
             if (orderType === 'consegna' && !address) {
                 alert('Per la consegna a domicilio è necessario inserire l\'indirizzo');
+                return false;
+            }
+            
+            if (orderType === 'asporto' && !pickupTime) {
+                alert('Per l\'asporto è necessario indicare l\'orario di ritiro');
                 return false;
             }
             
