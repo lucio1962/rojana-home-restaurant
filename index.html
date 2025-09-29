@@ -275,67 +275,6 @@
             transform: scale(1.05);
         }
         
-        /* Menu del Giorno */
-        #daily-menu {
-            background-color: var(--light-bg);
-        }
-        
-        .daily-menu-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .daily-menu-card {
-            flex: 1;
-            min-width: 300px;
-            max-width: 500px;
-            background: var(--white);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .menu-header {
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .thai-header {
-            background: var(--thai-red);
-        }
-        
-        .menu-items {
-            padding: 20px;
-        }
-        
-        .menu-item {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #eee;
-        }
-        
-        .menu-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .menu-item-title {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .menu-item-price {
-            color: var(--thai-red);
-            font-weight: bold;
-        }
-
         /* Controlli quantità */
         .quantity-controls {
             display: flex;
@@ -650,6 +589,54 @@
             margin-bottom: 5px;
         }
         
+        /* Contatti */
+        #contact {
+            background-color: var(--white);
+        }
+        
+        .contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            width: 100%;
+        }
+        
+        .contact-details {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .contact-item i {
+            margin-right: 15px;
+            color: var(--thai-red);
+            font-size: 1.2rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .map {
+            width: 100%;
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 400px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
         /* Footer */
         footer {
             background-color: var(--dark-blue);
@@ -745,7 +732,7 @@
                 margin-bottom: 10px;
             }
 
-            .about-content, .contact-container, .daily-menu-container {
+            .about-content, .contact-container {
                 flex-direction: column;
             }
             
@@ -877,7 +864,6 @@
             </button>
             <ul>
                 <li><a href="#about">Chi Siamo</a></li>
-                <li><a href="#daily-menu">Menu del Giorno</a></li>
                 <li><a href="#menu">Menu Completo</a></li>
                 <li><a href="#courses">Corsi</a></li>
                 <li><a href="#contact">Contatti</a></li>
@@ -885,7 +871,7 @@
         </div>
     </nav>
 
-    <!-- Chi Sono -->
+    <!-- Chi Siamo -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">La Nostra Storia</h2>
@@ -904,63 +890,7 @@
                     <p>Vi aspetto per farvi provare i veri sapori della Thailandia, preparati con amore e ingredienti di qualità!</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1610024062303-e355e94c0b8f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Noto - Città Barocca">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Menu del Giorno -->
-    <section id="daily-menu">
-        <div class="container">
-            <h2 class="section-title" id="daily-menu-title">Menu del Giorno</h2>
-            <div class="daily-menu-container">
-                <div class="daily-menu-card">
-                    <div class="menu-header thai-header">
-                        <h3>Menu Thailandese del Giorno</h3>
-                        <p>€28 - Antipasto, Piatto Principale</p>
-                    </div>
-                    <div class="menu-items">
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span id="thai-antipasto-title">Antipasto: Tod Mun Pla</span>
-                                <span class="menu-item-price">€9</span>
-                            </div>
-                            <p id="thai-antipasto-desc">Polpette di pesce speziate con salsa di cetrioli</p>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn minus" data-item="Tod Mun Pla">-</button>
-                                <span class="quantity-display" data-item="Tod Mun Pla">0</span>
-                                <button class="quantity-btn plus" data-item="Tod Mun Pla">+</button>
-                                <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Tod Mun Pla" data-price="9">Aggiungi</button>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span id="thai-principale-title">Piatto Principale: Pad Thai</span>
-                                <span class="menu-item-price">€14</span>
-                            </div>
-                            <p id="thai-principale-desc">Spaghetti di riso saltati con gamberi, tofu e germogli di soia</p>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn minus" data-item="Pad Thai">-</button>
-                                <span class="quantity-display" data-item="Pad Thai">0</span>
-                                <button class="quantity-btn plus" data-item="Pad Thai">+</button>
-                                <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Pad Thai" data-price="14">Aggiungi</button>
-                            </div>
-                        </div>
-                        <div class="menu-item">
-                            <div class="menu-item-title">
-                                <span>Piatto Principale: Khao Pad</span>
-                                <span class="menu-item-price">€12</span>
-                            </div>
-                            <p>Riso fritto thailandese con uovo, cipolla e piselli</p>
-                            <div class="quantity-controls">
-                                <button class="quantity-btn minus" data-item="Khao Pad">-</button>
-                                <span class="quantity-display" data-item="Khao Pad">0</span>
-                                <button class="quantity-btn plus" data-item="Khao Pad">+</button>
-                                <button class="btn btn-thai btn-small add-to-cart-btn" data-item="Khao Pad" data-price="12">Aggiungi</button>
-                            </div>
-                        </div>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1621277223263-4cb2e300c6b9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" alt="Cattedrale di Noto">
                 </div>
             </div>
         </div>
@@ -1251,8 +1181,6 @@
         // Gestione degli ordini
         document.addEventListener('DOMContentLoaded', function() {
             setupCartSystem();
-            updateDailyMenu();
-            highlightCurrentDay();
             setupMobileMenu();
             setupHomeButton();
         });
@@ -1535,36 +1463,6 @@
             }
             
             return true;
-        }
-
-        function highlightCurrentDay() {
-            const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
-            const today = new Date().getDay();
-            
-            const menuTitle = document.getElementById('daily-menu-title');
-            if (menuTitle) {
-                menuTitle.innerHTML = `Menu del Giorno - <span class="current-day">${days[today]}</span>`;
-            }
-        }
-
-        function updateDailyMenu() {
-            const days = ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'];
-            const today = new Date();
-            const dayOfWeek = today.getDay();
-            
-            const thaiMenus = {
-                0: { antipasto: "Tod Mun Pla", principale: "Pad Thai Classico" },
-                1: { antipasto: "Po Pia Tod", principale: "Khao Pad Moo" },
-                2: { antipasto: "Kiao", principale: "Pad See Ew" },
-                3: { antipasto: "Tod Mun Pla", principale: "Green Curry" },
-                4: { antipasto: "Po Pia Tod", principale: "Khao Pad Goong" },
-                5: { antipasto: "Kiao", principale: "Massaman Curry" },
-                6: { antipasto: "Tod Mun Pla", principale: "Panang Curry" }
-            };
-
-            const thaiMenu = thaiMenus[dayOfWeek];
-            document.getElementById('thai-antipasto-title').textContent = `Antipasto: ${thaiMenu.antipasto}`;
-            document.getElementById('thai-principale-title').textContent = `Piatto Principale: ${thaiMenu.principale}`;
         }
 
         // Smooth scrolling
