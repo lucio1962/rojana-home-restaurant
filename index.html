@@ -332,7 +332,7 @@
             background: white;
             padding: 30px;
             border-radius: 10px;
-            max-width: 500px;
+            max-width: 600px;
             width: 90%;
             max-height: 90vh;
             overflow-y: auto;
@@ -413,6 +413,88 @@
             font-family: inherit;
         }
 
+        /* Metodi di pagamento */
+        .payment-methods {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .payment-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--dark-blue);
+            text-align: center;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .payment-option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .payment-option:hover {
+            border-color: var(--thai-orange);
+        }
+
+        .payment-option.selected {
+            border-color: var(--thai-red);
+            background-color: rgba(196, 30, 58, 0.05);
+        }
+
+        .payment-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .payment-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .payment-details {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .payment-details.active {
+            display: block;
+        }
+
+        .cash-notice {
+            text-align: center;
+            padding: 10px;
+            background: #e7f3ff;
+            border-radius: 5px;
+            border-left: 4px solid #2196F3;
+        }
+
+        .card-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
         /* Carrello fisso */
         .cart-fixed {
             position: fixed;
@@ -457,6 +539,23 @@
                 left: 10px;
                 bottom: 80px;
                 padding: 12px 16px;
+            }
+
+            .payment-options {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .payment-option {
+                padding: 12px 8px;
+            }
+
+            .payment-icon {
+                font-size: 1.5rem;
+            }
+
+            .card-fields {
+                grid-template-columns: 1fr;
             }
         }
         
@@ -1197,6 +1296,84 @@
             <div id="orderTotal" style="text-align: right; margin: 20px 0; font-size: 1.2rem; font-weight: bold;">
                 TOTALE: €0.00
             </div>
+            
+            <!-- Sezione Metodi di Pagamento -->
+            <div class="payment-methods">
+                <h4 class="payment-title">Metodo di Pagamento</h4>
+                <div class="payment-options">
+                    <div class="payment-option" data-payment="cash">
+                        <i class="fas fa-money-bill-wave payment-icon" style="color: #27ae60;"></i>
+                        <span class="payment-name">Contanti</span>
+                    </div>
+                    <div class="payment-option" data-payment="card">
+                        <i class="fas fa-credit-card payment-icon" style="color: #3498db;"></i>
+                        <span class="payment-name">Carta</span>
+                    </div>
+                    <div class="payment-option" data-payment="paypal">
+                        <i class="fab fa-paypal payment-icon" style="color: #003087;"></i>
+                        <span class="payment-name">PayPal</span>
+                    </div>
+                    <div class="payment-option" data-payment="satispay">
+                        <i class="fas fa-mobile-alt payment-icon" style="color: #00d2a0;"></i>
+                        <span class="payment-name">Satispay</span>
+                    </div>
+                </div>
+                
+                <!-- Dettagli Pagamento -->
+                <div class="payment-details" id="cashDetails">
+                    <div class="cash-notice">
+                        <i class="fas fa-info-circle"></i>
+                        <strong>Pagamento in Contanti</strong>
+                        <p>Prepareremo il resto per te. Si prega di avere l'importo esatto o quanto più possibile.</p>
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="cardDetails">
+                    <div class="form-group">
+                        <label for="cardNumber">Numero Carta</label>
+                        <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                    </div>
+                    <div class="card-fields">
+                        <div class="form-group">
+                            <label for="cardExpiry">Scadenza</label>
+                            <input type="text" id="cardExpiry" placeholder="MM/AA" maxlength="5">
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCVC">CVC</label>
+                            <input type="text" id="cardCVC" placeholder="123" maxlength="3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardName">Nome sulla Carta</label>
+                        <input type="text" id="cardName" placeholder="Mario Rossi">
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="paypalDetails">
+                    <div style="text-align: center; padding: 20px;">
+                        <i class="fab fa-paypal" style="font-size: 3rem; color: #003087; margin-bottom: 15px;"></i>
+                        <p><strong>Pagamento con PayPal</strong></p>
+                        <p>Sarai reindirizzato a PayPal per completare il pagamento in modo sicuro.</p>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <small>PayPal accetta tutte le principali carte di credito e debito</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-details" id="satispayDetails">
+                    <div style="text-align: center; padding: 20px;">
+                        <div style="background: #00d2a0; color: white; padding: 10px; border-radius: 8px; display: inline-block; margin-bottom: 15px;">
+                            <strong>Satispay</strong>
+                        </div>
+                        <p><strong>Pagamento con Satispay</strong></p>
+                        <p>Scansiona il QR code che ti mostreremo o paga tramite l'app.</p>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px;">
+                            <small>Satispay è il modo più semplice per pagare dal tuo smartphone</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <form id="orderForm">
                 <div class="form-group">
                     <label for="customerName">Nome e Cognome *</label>
@@ -1242,6 +1419,7 @@
         // Sistema carrello
         let cart = {};
         let cartTotal = 0;
+        let selectedPaymentMethod = 'cash';
 
         // Gestione degli ordini
         document.addEventListener('DOMContentLoaded', function() {
@@ -1249,6 +1427,7 @@
             setupMobileMenu();
             setupHomeButton();
             setupOrderModal();
+            setupPaymentMethods();
         });
 
         function setupCartSystem() {
@@ -1284,6 +1463,34 @@
 
             // Setup carrello fisso
             document.getElementById('fixedCart').addEventListener('click', openOrderModal);
+        }
+
+        function setupPaymentMethods() {
+            const paymentOptions = document.querySelectorAll('.payment-option');
+            
+            paymentOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Rimuovi selezione da tutte le opzioni
+                    paymentOptions.forEach(opt => opt.classList.remove('selected'));
+                    
+                    // Aggiungi selezione all'opzione cliccata
+                    this.classList.add('selected');
+                    
+                    // Nascondi tutti i dettagli
+                    document.querySelectorAll('.payment-details').forEach(detail => {
+                        detail.classList.remove('active');
+                    });
+                    
+                    // Mostra i dettagli del metodo selezionato
+                    const paymentMethod = this.getAttribute('data-payment');
+                    selectedPaymentMethod = paymentMethod;
+                    document.getElementById(paymentMethod + 'Details').classList.add('active');
+                });
+            });
+
+            // Seleziona contanti di default
+            document.querySelector('.payment-option[data-payment="cash"]').classList.add('selected');
+            document.getElementById('cashDetails').classList.add('active');
         }
 
         function updateQuantity(item, change) {
@@ -1537,6 +1744,9 @@
             
             whatsappMessage += `%0A*TOTALE: €${cartTotal.toFixed(2)}*%0A%0A`;
             
+            // Aggiungi metodo di pagamento al messaggio
+            whatsappMessage += `*METODO DI PAGAMENTO:* ${getPaymentMethodName(selectedPaymentMethod)}%0A%0A`;
+            
             if (allergies) {
                 whatsappMessage += `*ALLERGIE/INTOLLERANZE:* ${allergies}%0A%0A`;
             }
@@ -1553,6 +1763,16 @@
             document.getElementById('orderModal').style.display = 'none';
             cart = {};
             updateCartDisplay();
+        }
+
+        function getPaymentMethodName(method) {
+            const methods = {
+                'cash': 'Contanti',
+                'card': 'Carta di Credito/Debito',
+                'paypal': 'PayPal',
+                'satispay': 'Satispay'
+            };
+            return methods[method] || 'Contanti';
         }
 
         function validateOrderForm() {
