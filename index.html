@@ -159,12 +159,12 @@
             line-height: 1;
         }
         
-        /* Navigation */
+        /* Navigation - CORRETTO */
         nav {
             background-color: var(--dark-blue);
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
@@ -172,7 +172,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 0 15px;
             position: relative;
         }
         
@@ -216,9 +216,10 @@
             display: block;
             color: white;
             text-decoration: none;
-            padding: 15px 20px;
+            padding: 20px 25px;
             transition: background 0.3s;
             font-weight: 500;
+            font-size: 1.1rem;
         }
         
         nav a:hover {
@@ -232,7 +233,8 @@
             color: white;
             font-size: 1.5rem;
             cursor: pointer;
-            padding: 5px;
+            padding: 10px;
+            z-index: 1001;
         }
         
         /* Sezioni */
@@ -700,7 +702,7 @@
             font-size: 1.1rem;
         }
 
-        /* Mobile optimization */
+        /* MOBILE STYLES - CORRETTI */
         @media (max-width: 768px) {
             body {
                 height: auto;
@@ -714,51 +716,62 @@
             }
 
             header {
-                padding: 60px 0;
+                padding: 80px 0;
                 min-height: 100vh;
                 background-attachment: scroll;
             }
 
             .logo {
-                font-size: 2.5rem;
+                font-size: 3rem;
             }
 
             .tagline {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+                padding: 0 15px;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
             }
 
             .hero-buttons .btn {
                 width: 100%;
-                margin-bottom: 10px;
+                max-width: 280px;
+                margin-bottom: 0;
             }
 
             .about-content, .contact-container {
                 flex-direction: column;
             }
             
+            /* NAVBAR MOBILE - CORRETTA */
             .nav-container {
-                flex-direction: column;
-                padding: 10px;
-                align-items: flex-start;
+                flex-direction: row;
+                padding: 15px;
+                align-items: center;
+                min-height: 70px;
             }
             
             .mobile-menu-btn {
                 display: block;
                 position: absolute;
                 right: 15px;
-                top: 15px;
+                top: 50%;
+                transform: translateY(-50%);
             }
             
             nav ul {
                 flex-direction: column;
                 width: 100%;
                 display: none;
-                margin-top: 10px;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--dark-blue);
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+                border-top: 1px solid rgba(255,255,255,0.1);
             }
             
             nav ul.active {
@@ -766,10 +779,11 @@
             }
             
             nav a {
-                padding: 12px 15px;
-                font-size: 1rem;
+                padding: 18px 20px;
+                font-size: 1.1rem;
                 text-align: left;
                 border-bottom: 1px solid rgba(255,255,255,0.1);
+                width: 100%;
             }
             
             nav a:last-child {
@@ -781,37 +795,80 @@
             }
             
             .section-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                margin-bottom: 40px;
             }
 
             .menu-items-grid {
                 grid-template-columns: 1fr;
+                gap: 20px;
             }
 
             .courses-container {
                 grid-template-columns: 1fr;
+                gap: 25px;
             }
 
             .menu-item-card {
-                margin-bottom: 20px;
+                margin-bottom: 0;
             }
 
             .home-btn {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
+                bottom: 25px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
             }
 
             .whatsapp-float {
-                bottom: 85px;
-                right: 20px;
+                bottom: 100px;
+                right: 25px;
+                width: 60px;
+                height: 60px;
+            }
+
+            .cart-fixed {
+                bottom: 100px;
+                left: 25px;
             }
         }
 
         @media (max-width: 480px) {
             .logo {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
                 font-size: 2rem;
+            }
+
+            nav a {
+                padding: 16px 20px;
+                font-size: 1rem;
+            }
+
+            .home-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+
+            .nav-container {
+                padding: 12px 15px;
+            }
+
+            .hero-buttons .btn {
+                max-width: 250px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .logo {
+                font-size: 2.2rem;
+            }
+            
+            .tagline {
+                font-size: 1.1rem;
             }
             
             .section-title {
@@ -819,18 +876,8 @@
             }
 
             nav a {
-                padding: 10px 12px;
-                font-size: 0.9rem;
-            }
-
-            .home-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-
-            .nav-container {
-                padding: 8px;
+                padding: 14px 18px;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -875,10 +922,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <button class="mobile-menu-btn">
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-            <ul>
+            <ul id="navMenu">
                 <li><a href="#about">Chi Sono</a></li>
                 <li><a href="#menu">Menu Completo</a></li>
                 <li><a href="#courses">Corsi</a></li>
@@ -1367,30 +1414,42 @@
         }
 
         function setupMobileMenu() {
-            const menuBtn = document.querySelector('.mobile-menu-btn');
-            const navList = document.querySelector('nav ul');
+            const menuBtn = document.getElementById('mobileMenuBtn');
+            const navList = document.getElementById('navMenu');
             
-            menuBtn.addEventListener('click', function() {
-                navList.classList.toggle('active');
-                const icon = this.querySelector('i');
-                if (navList.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-
-            // Chiudi il menu quando si clicca su un link
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', function() {
-                    navList.classList.remove('active');
-                    const icon = menuBtn.querySelector('i');
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+            if (menuBtn && navList) {
+                menuBtn.addEventListener('click', function() {
+                    navList.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (navList.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
                 });
-            });
+
+                // Chiudi il menu quando si clicca su un link
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navList.classList.remove('active');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+
+                // Chiudi il menu quando si clicca fuori
+                document.addEventListener('click', function(e) {
+                    if (!e.target.closest('nav') && navList.classList.contains('active')) {
+                        navList.classList.remove('active');
+                        const icon = menuBtn.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
         }
 
         function setupOrderModal() {
@@ -1401,28 +1460,32 @@
             const addressGroup = document.getElementById('addressGroup');
             const pickupTimeGroup = document.getElementById('pickupTimeGroup');
             
-            orderType.addEventListener('change', function() {
-                if (this.value === 'consegna') {
-                    addressGroup.style.display = 'block';
-                    pickupTimeGroup.style.display = 'none';
-                    document.getElementById('deliveryAddress').required = true;
-                    document.getElementById('pickupTime').required = false;
-                } else if (this.value === 'asporto') {
-                    addressGroup.style.display = 'none';
-                    pickupTimeGroup.style.display = 'block';
-                    document.getElementById('deliveryAddress').required = false;
-                    document.getElementById('pickupTime').required = true;
-                } else {
-                    addressGroup.style.display = 'none';
-                    pickupTimeGroup.style.display = 'none';
-                    document.getElementById('deliveryAddress').required = false;
-                    document.getElementById('pickupTime').required = false;
-                }
-            });
+            if (orderType) {
+                orderType.addEventListener('change', function() {
+                    if (this.value === 'consegna') {
+                        addressGroup.style.display = 'block';
+                        pickupTimeGroup.style.display = 'none';
+                        document.getElementById('deliveryAddress').required = true;
+                        document.getElementById('pickupTime').required = false;
+                    } else if (this.value === 'asporto') {
+                        addressGroup.style.display = 'none';
+                        pickupTimeGroup.style.display = 'block';
+                        document.getElementById('deliveryAddress').required = false;
+                        document.getElementById('pickupTime').required = true;
+                    } else {
+                        addressGroup.style.display = 'none';
+                        pickupTimeGroup.style.display = 'none';
+                        document.getElementById('deliveryAddress').required = false;
+                        document.getElementById('pickupTime').required = false;
+                    }
+                });
+            }
             
-            cancelBtn.addEventListener('click', function() {
-                modal.style.display = 'none';
-            });
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                });
+            }
             
             modal.addEventListener('click', function(e) {
                 if (e.target === modal) {
@@ -1430,10 +1493,12 @@
                 }
             });
             
-            orderForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                submitOrder();
-            });
+            if (orderForm) {
+                orderForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    submitOrder();
+                });
+            }
         }
 
         function submitOrder() {
