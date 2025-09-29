@@ -156,6 +156,7 @@
             font-size: 8rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             color: white;
+            line-height: 1;
         }
         
         /* Navigation */
@@ -852,7 +853,7 @@
             </div>
             <div class="hero-decoration">
                 <div class="thai-flag">
-                    🇹🇭
+                    TH
                 </div>
             </div>
         </div>
@@ -1159,7 +1160,7 @@
                 </div>
                 <div class="form-group" id="addressGroup" style="display: none;">
                     <label for="deliveryAddress">Indirizzo di Consegna *</label>
-                    <textarea id="deliveryAddress" rows="3" placeholder="Via, Numero, Città"></textarea>
+                    <textarea id="deliveryAddress" rows="3" placeholder="Via, Numero, Città" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="allergies">Allergie o Intolleranze Alimentari</label>
@@ -1187,6 +1188,7 @@
             setupCartSystem();
             setupMobileMenu();
             setupHomeButton();
+            setupOrderModal();
         });
 
         function setupCartSystem() {
@@ -1368,8 +1370,7 @@
             });
         }
 
-        // Setup modale ordine
-        document.addEventListener('DOMContentLoaded', function() {
+        function setupOrderModal() {
             const modal = document.getElementById('orderModal');
             const orderForm = document.getElementById('orderForm');
             const cancelBtn = document.getElementById('cancelOrder');
@@ -1381,12 +1382,18 @@
                 if (this.value === 'consegna') {
                     addressGroup.style.display = 'block';
                     pickupTimeGroup.style.display = 'none';
+                    document.getElementById('deliveryAddress').required = true;
+                    document.getElementById('pickupTime').required = false;
                 } else if (this.value === 'asporto') {
                     addressGroup.style.display = 'none';
                     pickupTimeGroup.style.display = 'block';
+                    document.getElementById('deliveryAddress').required = false;
+                    document.getElementById('pickupTime').required = true;
                 } else {
                     addressGroup.style.display = 'none';
                     pickupTimeGroup.style.display = 'none';
+                    document.getElementById('deliveryAddress').required = false;
+                    document.getElementById('pickupTime').required = false;
                 }
             });
             
@@ -1404,7 +1411,7 @@
                 e.preventDefault();
                 submitOrder();
             });
-        });
+        }
 
         function submitOrder() {
             const name = document.getElementById('customerName').value;
